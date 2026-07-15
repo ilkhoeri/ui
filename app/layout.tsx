@@ -11,7 +11,7 @@ import { Comp } from "@/source/assets/components";
 import { Headnav } from "@/source/assets/nav-head";
 import { AsideLeft } from "@/source/assets/nav-aside-left";
 import { metaDocsRoute } from "@/routes";
-import { META_THEME_COLORS, SEO_VERIFICATION, siteConfig, iconsConfig, linksConfig } from "./site/config";
+import { META_THEME_COLORS, SEO_VERIFICATION, siteConfig, iconsConfig, linksConfig } from "../site/config";
 
 import type { Metadata } from "next";
 

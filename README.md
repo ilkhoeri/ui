@@ -6,6 +6,6 @@
 
 <h1 align="center"><strong>oeri modular modules</strong></h1>
 
-## [get modules only](https://github.com/ilkhoeri/ui/tree/main/resource/docs)
+## [get modules only](https://github.com/ilkhoeri/ui/tree/master/resource/docs)
 
 > [Let's join our community on Discord](https://discord.gg/Xct5BBPDZ9).

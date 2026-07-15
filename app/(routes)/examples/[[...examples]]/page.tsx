@@ -1,7 +1,7 @@
 import { Examples } from "./client";
 import { retitled } from "@/source/utils";
 import { Comp, Title } from "@/source/assets/components";
-import { configMetadata, siteConfig } from "@/app/site/config";
+import { configMetadata, siteConfig } from "@/site/config";
 
 import type { Metadata, ResolvingMetadata } from "next";
 

@@ -1,7 +1,7 @@
 import { RestDocs } from "./client";
 import { notFound } from "next/navigation";
 import { NavBottom } from "@/source/assets/nav-prev-next";
-import { getDocFromParams } from "@/app/site/docs-params";
+import { getDocFromParams } from "@/site/docs-params";
 import { TableOfContents } from "@/source/assets/toc/toc";
 import { NavigationBreadcrumb } from "@/source/assets/nav-breadcrumb";
 import { MDXComponent } from "@/resource/docs_demo/assets/mdx/mdx-context";

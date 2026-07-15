@@ -1,6 +1,6 @@
 import { Typography } from "@/ui/typography";
 import { allDocs } from "contentlayer/generated";
-import { configMetadata, siteConfig } from "@/app/site/config";
+import { configMetadata, siteConfig } from "@/site/config";
 import { pathParams } from "@/resource/docs_demo/assets/mdx/utils";
 import { MDXComponent } from "@/resource/docs_demo/assets/mdx/mdx-context";
 import { ArticleContent } from "@/source/assets/toc/context";

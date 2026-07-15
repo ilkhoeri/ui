@@ -480,7 +480,7 @@ const links = [
     title: "Repo",
     target: "_blank",
     icon: BrandGithubFillIcon,
-    url: "https://github.com/ilkhoeri/ui/tree/main/resource/docs"
+    url: "https://github.com/ilkhoeri/ui/tree/master/resource/docs"
   }
 ];
 

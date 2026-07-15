@@ -16,7 +16,7 @@ The following steps will get you setup to contribute changes to this repo:
 
 1. Fork this repo.
 
-2. Clone your forked repo: `git clone git@github.com:{your_username}/oeri.git`
+2. Clone your forked repo: `git clone git@github.com:{your_username}/ui.git`
 
 3. Run `bun install` to install dependencies.
 
@@ -27,8 +27,8 @@ The following steps will get you setup to contribute changes to this repo:
 For an officially supported isolated dev environment that automatically installs dependencies for you:
 
 1. `F1` in VSCode and start typing `Dev Containers: Clone Repository in Named Container Volume` to run the command.
-2. For the repo, paste `git@github.com:{your_username}/oeri.git` if you're using ssh.
-3. Click `Create a new volume...` and name it `oeri` and the folder name as `oeri`.
+2. For the repo, paste `git@github.com:{your_username}/ui.git` if you're using ssh.
+3. Click `Create a new volume...` and name it `ui` and the folder name as `ui`.
 
 Note: if you can't see `Dev Containers` in the `F1` menu, follow [this guide](https://code.visualstudio.com/docs/devcontainers/tutorial) to install the needed extension.
 In the OSS version of VSCode the extension may be not available.
@@ -49,15 +49,15 @@ In the OSS version of VSCode the extension may be not available.
 
 ### Tests
 
-oeri uses Jest for testing. After implementing your contribution, write tests for it. Just create a new file under `__tests__` or add additional tests to the appropriate existing file.
+`uikit` uses Jest for testing. After implementing your contribution, write tests for it. Just create a new file under `__tests__` or add additional tests to the appropriate existing file.
 
 Before submitting your PR, run `bun run test` to make sure there are no (unintended) breaking changes.
 
 ### Documentation
 
-The oeri documentation lives in the README.md. Be sure to document any API changes you implement.
+The `uikit` documentation lives in the README.md. Be sure to document any API changes you implement.
 
 ## License
 
-By contributing your code to the oeri GitHub repository, you agree to
+By contributing your code to the `uikit` GitHub repository, you agree to
 license your contribution under the MIT license.

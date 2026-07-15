@@ -1,4 +1,4 @@
-import { configMetadata, siteConfig } from "@/app/site/config";
+import { configMetadata, siteConfig } from "@/site/config";
 import { Comp } from "@/source/assets/components";
 import { Typography } from "@/ui/typography";
 import Link from "next/link";

@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-We, as members, contributors, and leaders of the **oeri** project, pledge to make participation in our community a harassment-free, collaborative, and uplifting experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, level of experience, education, socio-economic status, nationality, personal appearance, race and religion.
+We, as members, contributors, and leaders of the **uikit** project, pledge to make participation in our community a harassment-free, collaborative, and uplifting experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, level of experience, education, socio-economic status, nationality, personal appearance, race and religion.
 
 We are committed to building tools that empower developers to create exceptional applications while fostering a positive, respectful, and inclusive community.
 
@@ -79,7 +79,7 @@ For answers to common questions about this Code of Conduct, see the FAQ at [http
 
 ## Our Vision
 
-At **oeri**, we strive to empower developers tools that enhance creativity and productivity. By fostering an inclusive, collaborative, and optimistic environment, we aim to not only build exceptional tools but also create a space where developers feel inspired and valued.
+At **uikit**, we strive to empower developers tools that enhance creativity and productivity. By fostering an inclusive, collaborative, and optimistic environment, we aim to not only build exceptional tools but also create a space where developers feel inspired and valued.
 
 Together, let’s push the boundaries of innovation and build a better future for application development.
 

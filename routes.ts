@@ -6,7 +6,6 @@ export interface MetaDocsRoute {
   group: string;
   data: FileDocMeta[];
 }
-
 export type NestedMetaDocsRoute = {
   group: string;
   data: MetaDocsRoute[];
