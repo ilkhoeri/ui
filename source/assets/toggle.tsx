@@ -12,6 +12,7 @@ import { Svg } from "@/ui/svg";
 import { BrandGithubFillIcon, CheckIcon, CopyIcon, ArrowDownloadIcon } from "@/icons/*";
 
 import globalStyle from "../styles/styles";
+import { GITREPO_DOCS_URL } from "@/site/config";
 
 const SIZE_ICON: number | `${number}` = 18;
 
@@ -33,7 +34,7 @@ export const GetCodeButton = React.forwardRef<
 
   return (
     <Tooltip asChild {...sharedProp} content="Repository" contentProps={{ className: "min-w-[86px]" }}>
-      <Anchor ref={ref} {...props} target="_blank" rel="noopener noreferrer nofollow" href={href || `https://github.com/ilkhoeri/ui/tree/master/resource/docs/${repo}`} tabIndex={-1} title="Get Code" className={globalStyle({ toggle: "item", size: "icon-xs" }, className)}>
+      <Anchor ref={ref} {...props} target="_blank" rel="noopener noreferrer nofollow" href={href || `${GITREPO_DOCS_URL}/${repo}`} tabIndex={-1} title="Get Code" className={globalStyle({ toggle: "item", size: "icon-xs" }, className)}>
         <BrandGithubFillIcon fill="currentColor" size={SIZE_ICON} />
       </Anchor>
     </Tooltip>

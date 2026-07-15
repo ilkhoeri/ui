@@ -22,7 +22,7 @@ import "../source/styles/moonlight.css";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Oeri UI",
+    template: `%s | ${siteConfig.name}`,
     default: siteConfig.name
   },
   applicationName: siteConfig.name,

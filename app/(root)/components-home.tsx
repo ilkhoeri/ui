@@ -32,6 +32,7 @@ import { GitBranchIcon, GitCommitIcon, GitPullRequestIcon } from "@/icons/*";
 import { codes } from "./code-to-copy";
 
 import style from "@/source/styles/.module.css";
+import { GITREPO_DOCS_URL } from "@/site/config";
 
 const TYPING_DEFAULT = ["customize", "every", "of Your UI", "components"];
 
@@ -480,7 +481,7 @@ const links = [
     title: "Repo",
     target: "_blank",
     icon: BrandGithubFillIcon,
-    url: "https://github.com/ilkhoeri/ui/tree/master/resource/docs"
+    url: GITREPO_DOCS_URL
   }
 ];
 

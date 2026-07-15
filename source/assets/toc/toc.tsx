@@ -13,6 +13,7 @@ import type { Item, TableOfContents } from "./config";
 import { useIsomorphicEffect } from "@/hooks/use-isomorphic-effect";
 import { useContentReady } from "./context";
 import { Loader } from "@/ui/loader";
+import { EDITPAGE_BASE_URL } from "@/site/config";
 
 export function useMounted() {
   const [mounted, setMounted] = React.useState(false);
@@ -55,7 +56,7 @@ export function TableOfContents({ toc, sub }: TocProps) {
   const activeItem = useActiveItem(itemIds);
 
   const paths = pathname.split("/").slice(2).filter(Boolean);
-  const editPageLink = paths.length > 1 ? `https://github.com/ilkhoeri/ui/edit/master/resource/docs_raw/${sourceFile(paths)}.mdx` : "";
+  const editPageLink = paths.length > 1 ? `${EDITPAGE_BASE_URL}/${sourceFile(paths)}.mdx` : paths.length === 1 ? `${EDITPAGE_BASE_URL}/docs.mdx` : "";
 
   const isAvailableTOC = min_lg && toc?.items && toc?.items?.length > 1;
 

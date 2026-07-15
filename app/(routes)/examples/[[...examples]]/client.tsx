@@ -3,13 +3,14 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { FileIcon } from "@/icons/*";
-import { sourceFiles } from "@/source/utils";
 import { Loader } from "@/ui/loader";
+import { sourceFiles } from "@/source/utils";
+import { EDITPAGE_BASE_URL } from "@/site/config";
 
 const FallbackComponent = (segment: string[] | undefined) => (
   <div>
     <p className=" border-b pb-1 pt-2">Component not found</p>
-    <a href={`https://github.com/ilkhoeri/ui/edit/master/resource/docs_raw/${sourceFiles(segment)}.mdx`} target="_blank" className="w-max justify-start gap-2 pb-1.5 pt-3 text-sm text-muted-foreground transition-colors underline-hover hover:text-constructive">
+    <a href={`${EDITPAGE_BASE_URL}/${sourceFiles(segment)}.mdx`} target="_blank" className="w-max justify-start gap-2 pb-1.5 pt-3 text-sm text-muted-foreground transition-colors underline-hover hover:text-constructive">
       Edit this page on GitHub <FileIcon arrow />
     </a>
   </div>

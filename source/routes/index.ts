@@ -1,4 +1,5 @@
 import * as Icon from "@/icons/*";
+import { GITREPO_BRANCH, GITREPO_URL } from "@/site/config";
 
 export type InnerRoutes = { title: string; href: string };
 export type SingleRoute = { title: string; href?: string; data: InnerRoutes[] };
@@ -101,11 +102,11 @@ export const appRoutes = {
     },
     {
       title: "Github",
-      href: "https://github.com/ilkhoeri/ui/"
+      href: `${GITREPO_URL}/`
     },
     {
       title: "Contributing",
-      href: "https://github.com/ilkhoeri/ui/blob/master/CONTRIBUTING.md"
+      href: `${GITREPO_URL}/blob/${GITREPO_BRANCH}/CONTRIBUTING.md`
     }
   ]
 };

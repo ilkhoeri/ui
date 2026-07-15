@@ -16,6 +16,7 @@ import { Sheets } from "@/ui/sheets";
 import { metaDocsRoute, type MetaDocsRoute, type NestedMetaDocsRoute } from "@/routes";
 
 import globalStyle from "../styles/styles";
+import { siteConfig } from "@/site/config";
 
 interface HeadnavProps {
   routes?: (MetaDocsRoute | NestedMetaDocsRoute)[] | null;
@@ -113,7 +114,7 @@ export function LinkHome({ className }: { open?: boolean; className?: string }) 
       <Sheets.Trigger unstyled openChangeOnContextMenu>
         <Link href="/" aria-label="oeri" className={cn("gap-1 rounded-lg px-2 py-1 text-[22px] leading-none duration-75 hover:text-constructive-foreground", className)}>
           <BrandOeriIcon size={28} />
-          <span className="font-playwrite-romania font-semibold tracking-wide">uikit</span>
+          <span className="font-ubuntu font-semibold tracking-wide">{siteConfig.name}</span>
         </Link>
       </Sheets.Trigger>
 
@@ -124,7 +125,7 @@ export function LinkHome({ className }: { open?: boolean; className?: string }) 
             <span className="font-medium">Branding assets</span>
           </div>
           <span className="mt-2 inline-flex items-center gap-2 text-left text-xs text-color rtl:text-right">
-            View Logos
+            View {siteConfig.name} Logos
             <CircleArrowIcon />
           </span>
         </Link>

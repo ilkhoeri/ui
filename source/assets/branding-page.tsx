@@ -8,8 +8,8 @@ import { useClipboard } from "@/hooks/use-clipboard";
 import { ArrowIcon, HasCopyIcon, BrandOeriIcon as LogoIcon, TextIcon } from "@/icons/*";
 
 const FONT_VARIANT = {
-  name: "Playwrite România",
-  url: "https://fonts.google.com/specimen/Playwrite+RO?preview.text=Oeri"
+  name: "Ubuntu",
+  url: "https://fonts.google.com/?query=ubuntu&preview.text=UI%C2%B7kit"
 };
 
 const COLOR_PALETTE = ["#142641", "#284e83", "#3569b2"];
@@ -75,7 +75,7 @@ function FontPalette() {
   return (
     <div className={cn(classes({ class: "card" }), "aspect-[6/4] bg-color [&_*]:!text-background")}>
       <div className={classes({ class: "sectionTop" })}>
-        <Typography prose="h1" className="whitespace-nowrap font-playwrite-romania text-2xl leading-none">
+        <Typography prose="h1" className="whitespace-nowrap font-ubuntu text-2xl leading-none">
           {FONT_VARIANT.name}
         </Typography>
       </div>

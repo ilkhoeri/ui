@@ -200,6 +200,7 @@ export default {
       fontFamily: {
         "anek-telugu": ["var(--ff-anek-telugu)"],
         amiri: ["var(--ff-amiri)"],
+        ubuntu: ["var(--ff-ubuntu)"],
         inter: ["var(--ff-inter)"],
         kanit: ["var(--ff-kanit)"],
         barlow: ["var(--ff-barlow)"],

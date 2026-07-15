@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://ilkhoeri.github.io/ui";
 
+export const GITREPO_BRANCH = "master";
+export const GITREPO_URL = "https://github.com/ilkhoeri/ui";
+export const GITREPO_DOCS_URL = `${GITREPO_URL}/tree/${GITREPO_BRANCH}/resource/docs`;
+export const EDITPAGE_BASE_URL = `${GITREPO_URL}/edit/${GITREPO_BRANCH}/resource/docs_raw`;
+
 export function absoluteUrl(path: string) {
   return `${SITE_URL}${path}`;
 }
@@ -10,10 +15,10 @@ export const siteConfig = {
   creator: "@ilkhoeri",
   url: `${SITE_URL}`,
   email: "khoeriilham@gmail.com",
-  name: "UI kit",
+  name: "UI·kit",
   ogImage: "/assets/images/homepage.webp",
   description: "The Good Choice for Development Application based on React, components server, hooks, and more functions.",
-  archives: ["https://github.com/ilkhoeri/ui"],
+  archives: [GITREPO_URL],
   keywords: ["ui", "hooks", "web", "primitive", "primitive ui", "tailwind", "component server", "function", "component", "development web", "web app", "straightforward dependencies", "dependencies", "npm", "package"],
   links: {
     twitter: "https://x.com/ilkhoeri",
