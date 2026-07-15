@@ -1,8 +1,9 @@
 // required global.d.ts
 "use client";
 import * as React from "react";
-import { Cookies, Theme /*UserAgent*/ } from "./types";
+import { Cookies, Theme } from "./types";
 import { useDirection } from "@/hooks/use-direction";
+import { useCookie } from "@/hooks/use-cookie";
 
 export type CookiesName = `${Cookies}` | (string & {});
 
@@ -10,10 +11,6 @@ type DirectedAppValue = {
   dir: Direction;
   theme: Theme;
   isOpenAside: boolean;
-  // userAgent: UserAgent;
-  // locale
-  // mssg: Record<string, MessageFormatElement[]> | Record<string, string>;
-  // lang: string;
 };
 
 interface AppContext extends DirectedAppValue {
@@ -33,17 +30,22 @@ export function useApp() {
   return _ctx;
 }
 
-interface AppProviderProps extends DirectedAppValue {
+interface AppProviderProps {
   children: React.ReactNode;
 }
 
+function useCookieValues() {
+  const [dir] = useCookie<Direction>("__dir", "ltr");
+  const [theme] = useCookie<Theme>("__theme", "system");
+  const [isOpenAside] = useCookie<boolean>("__is_open_aside", true);
+  return { theme, dir, isOpenAside };
+}
+
 export function AppProvider(props: AppProviderProps) {
-  const { children, theme = "system", dir: initialDirection = "ltr", isOpenAside = true, ...others } = props;
-
-  const [openAside, setOpenAside] = React.useState<Booleanish>(isOpenAside);
-
+  const { children, ...others } = props;
+  const { theme, dir: initialDirection, isOpenAside } = useCookieValues();
   const { dir, ..._direction } = useDirection({ initialDirection });
-
+  const [openAside, setOpenAside] = React.useState<Booleanish>(isOpenAside);
   const setCookie = React.useCallback((name: string, value: string, days = 30) => {
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -64,5 +66,11 @@ export function AppProvider(props: AppProviderProps) {
     [theme, dir, openAside, setOpenAside, isOpenAside, setCookie, _direction, others]
   );
 
-  return <ctx.Provider value={contextValue}>{children}</ctx.Provider>;
+  return (
+    <ctx.Provider value={contextValue}>
+      <html lang="en" dir={dir} suppressHydrationWarning data-themeid-light="default" data-themeid-dark="default" data-theme="default">
+        {children}
+      </html>
+    </ctx.Provider>
+  );
 }

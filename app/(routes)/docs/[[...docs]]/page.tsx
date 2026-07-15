@@ -13,6 +13,7 @@ export function generateStaticParams() {
     {
       docs: []
     },
+    { docs: ["web"] },
     { docs: ["web", "components"] },
     { docs: ["web", "hooks"] },
     { docs: ["web", "utilities"] },
