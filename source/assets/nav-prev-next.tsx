@@ -61,7 +61,9 @@ export function NavBottom(props: NavBottomProps) {
             </Svg>
             <span className={classes.label}>{previous ? previous.meta.title : "Previous"}</span>
           </div>
-          <p className={classes.summary}>{previous.meta.summary}</p>
+          <p className={classes.summary}>
+            <bdi>{previous.meta.summary}</bdi>
+          </p>
         </Link>
       )}
 

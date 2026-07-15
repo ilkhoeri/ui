@@ -2,6 +2,7 @@
 import React from "react";
 
 export type Direction = "ltr" | "rtl";
+
 export interface useDirectionProps {
   /** Direction set as a default value, `ltr` by default */
   defaultDirection?: Direction;
@@ -20,22 +21,44 @@ export function useDirection(_dir: useDirectionProps) {
     document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
   };
 
-  const setDirection = (direction: Direction) => {
-    setDir(direction);
-    document.documentElement.setAttribute("dir", direction);
-    setCookie("__dir", direction);
-  };
-
   useIsomorphicEffect(() => {
-    if (detectDirection) {
-      const direction = document.documentElement.getAttribute("dir");
-      if (direction === "rtl" || direction === "ltr") {
-        setDirection(direction);
+    if (!detectDirection) return;
+
+    const html = document.documentElement;
+
+    const observer = new MutationObserver(() => {
+      const current = html.getAttribute("dir");
+
+      if (current === "ltr" || current === "rtl") {
+        setDir(current);
       }
-    }
+    });
+
+    observer.observe(html, {
+      attributes: true,
+      attributeFilter: ["dir"]
+    });
+
+    return () => observer.disconnect();
   }, [detectDirection]);
 
-  const toggleDirection = () => setDirection(dir === "ltr" ? "rtl" : "ltr");
+  // Sinkronisasi setiap kali dir berubah
+  useIsomorphicEffect(() => {
+    document.documentElement.setAttribute("dir", dir);
+    setCookie("__dir", dir);
+  }, [dir]);
 
-  return { toggleDirection, setDirection, dir };
+  const setDirection = React.useCallback((direction: Direction) => {
+    setDir(direction);
+  }, []);
+
+  const toggleDirection = React.useCallback(() => {
+    setDir(prev => (prev === "ltr" ? "rtl" : "ltr"));
+  }, []);
+
+  return {
+    dir,
+    setDirection,
+    toggleDirection
+  };
 }

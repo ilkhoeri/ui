@@ -119,16 +119,23 @@ export function BannerClosingGetStarted() {
 
   return (
     <section className="card_fold rounded-2xl px-8 py-12 text-white shadow-xl">
-      <h3 className={cn(typographyVariant({ prose: "h3" }), "relative z-[3] !mt-0")}>Ready to build with confidence?</h3>
+      <h3 className={cn(typographyVariant({ prose: "h3" }), "relative z-[3] !mt-0 text-white")}>
+        <bdi>Ready to build with confidence?</bdi>
+      </h3>
       <p className="relative z-[3] mt-3 max-w-xl text-lg text-[#c1c1c1]">
-        <b>{siteConfig.name}</b> gives you full control, elegant defaults, and a toolbox designed to scale — no bloat, no surprises.
+        <b>{siteConfig.name}</b> <bdi>gives you full control, elegant defaults, and a toolbox designed to scale — no bloat, no surprises.</bdi>
       </p>
-
-      <p className="relative z-[3] mt-4 text-base font-medium text-white">Explore:</p>
-
+      <p className="relative z-[3] mt-4 text-base font-medium text-white">
+        <bdi>Explore:</bdi>
+      </p>
       <div ref={setRootRef} className="relative z-[3] mt-2 grid max-md:grid-flow-row md:w-max md:grid-flow-col">
         {controls}
-        <FloatingIndicator target={controlsRefs[hover ?? active]} color="white" parent={rootRef} className={cn((hover === null || hover === 0) && "max-md:rounded-t-xl md:rounded-l-xl", hover === 3 && "max-md:rounded-b-xl md:rounded-r-xl")} />
+        <FloatingIndicator
+          target={controlsRefs[hover ?? active]}
+          color="white"
+          parent={rootRef}
+          className={cn((hover === null || hover === 0) && "max-md:rounded-t-xl md:rounded-l-xl md:rtl:rounded-l-none md:rtl:rounded-r-xl", hover === 3 && "max-md:rounded-b-xl md:rounded-r-xl md:rtl:rounded-r-none md:rtl:rounded-l-xl")}
+        />
       </div>
       <span className="fold" />
       <div className="points_wrapper">

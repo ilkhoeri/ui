@@ -1,6 +1,7 @@
 // import { userAgent } from "next/server";
 // import { cookies } from "next/headers";
 // import { Cookies, Theme } from "@/modules/web/configuration/types";
+import Script from "next/script";
 import { bodyConfig } from "./fonts";
 import { metaDocsRoute } from "@/routes";
 import { Main } from "@/source/assets/main";
@@ -162,6 +163,7 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
               <ScrollToggle />
             </ClientOnly>
           </ThemeProvider>
+          <Script id="init-dir" strategy="beforeInteractive">{`(() => { const match = document.cookie.match(/(?:^|; )__dir=(rtl|ltr)/); if (match) document.documentElement.dir = match[1];})();`}</Script>
         </body>
       </html>
     </AppProvider>
