@@ -803,6 +803,22 @@ export const fileDocsMeta = [
     }
   },
   {
+    name: "use-cookie",
+    ext: ".ts",
+    path: "/docs/web/hooks/use-cookie",
+    segment: ["web", "hooks"],
+    meta: {
+      date: "2025-01-05T00:00:00.000Z",
+      title: "useCookie",
+      description: "A hook to store and retrieve cookie values.",
+      summary: "Storing and retrieving certain cookies.",
+      component: true,
+      links: {
+        doc: "https://"
+      }
+    }
+  },
+  {
     name: "use-device-info",
     ext: ".ts",
     path: "/docs/web/hooks/use-device-info",

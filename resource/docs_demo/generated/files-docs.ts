@@ -269,7 +269,7 @@ export const fileDocsWeb = [
     segment: ["web", "hooks"]
   },
   {
-    name: "use-cookies-client",
+    name: "use-cookie",
     ext: ".ts",
     segment: ["web", "hooks"]
   },

@@ -3,17 +3,20 @@ import * as React from "react";
 
 export type CookieName = string & {};
 
+function documentCookie(name: CookieName) {
+  return typeof document !== "undefined"
+    ? document.cookie
+        .split("; ")
+        .find(row => row.startsWith(`${name}=`))
+        ?.split("=")[1]
+    : undefined;
+}
+
 export function useCookie<T>(name: CookieName, defaultValue: T) {
   const getCookie = React.useCallback(() => {
-    const cookies =
-      typeof document !== "undefined"
-        ? document.cookie
-            .split("; ")
-            .find(row => row.startsWith(`${name}=`))
-            ?.split("=")[1]
-        : undefined;
+    const cookies = documentCookie(name);
     return (cookies ? decodeURIComponent(cookies) : defaultValue) as T;
-  }, [name, defaultValue]);
+  }, [name, documentCookie, defaultValue]);
 
   const [cookieValue, setCookieValue] = React.useState(getCookie);
 
