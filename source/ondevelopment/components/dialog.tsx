@@ -18,9 +18,9 @@ interface DialogContextProps {
   closed: (callback?: () => void) => void;
   modal?: boolean;
   refs: {
-    trigger: React.RefObject<HTMLButtonElement>;
-    content: React.RefObject<HTMLDivElement>;
-    overlay: React.RefObject<HTMLDivElement>;
+    trigger: React.RefObject<HTMLButtonElement | null>;
+    content: React.RefObject<HTMLDivElement | null>;
+    overlay: React.RefObject<HTMLDivElement | null>;
   };
   side?: Side;
 }

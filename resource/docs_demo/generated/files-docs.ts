@@ -509,17 +509,7 @@ export const fileDocsWeb = [
     segment: ["web", "hooks"]
   },
   {
-    name: "cnx",
-    ext: ".ts",
-    segment: ["web", "utilities"]
-  },
-  {
-    name: "cvx",
-    ext: ".ts",
-    segment: ["web", "utilities"]
-  },
-  {
-    name: "ocx",
+    name: "cn",
     ext: ".ts",
     segment: ["web", "utilities"]
   },

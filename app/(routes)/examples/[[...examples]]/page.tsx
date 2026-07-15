@@ -6,9 +6,11 @@ import { configMetadata, siteConfig } from "@/app/site/config";
 import type { Metadata, ResolvingMetadata } from "next";
 
 interface ExamplesParams {
-  params: Promise<{
-    examples: string[];
-  }>;
+  params: Promise<{ examples?: string[] | undefined }>;
+}
+
+export function generateStaticParams() {
+  return [{ examples: ["examples"] }];
 }
 
 export async function generateMetadata({ params }: ExamplesParams, parent: ResolvingMetadata): Promise<Metadata> {
@@ -17,7 +19,7 @@ export async function generateMetadata({ params }: ExamplesParams, parent: Resol
 
   return configMetadata({
     url: currentSlug,
-    title: retitled(slug) || "Examples",
+    title: retitled(slug, "Examples"),
     description: siteConfig.description,
     images: (await parent).openGraph?.images
   });

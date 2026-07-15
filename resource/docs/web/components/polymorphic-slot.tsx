@@ -3,10 +3,10 @@ import { cn } from "@/utils/cn";
 
 export type Element<T> = { el?: T | (React.ElementType & {}); style?: CSSProperties };
 export type CSSProperties = React.CSSProperties & Record<string, any>;
-export type ElementType = keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>;
+export type ElementType = keyof React.JSX.IntrinsicElements | React.JSXElementConstructor<any>;
 export type PolymorphicRef<T> = T extends React.ElementType ? React.ComponentPropsWithRef<T>["ref"] : never;
 export type ExtendedProps<Props = object, OverrideProps = object> = OverrideProps & Omit<Props, keyof OverrideProps>;
-export type PropsOf<T extends ElementType> = JSX.LibraryManagedAttributes<T, React.ComponentPropsWithoutRef<T>>;
+export type PropsOf<T extends ElementType> = React.JSX.LibraryManagedAttributes<T, React.ComponentPropsWithoutRef<T>>;
 export type InheritedProps<T extends ElementType, Props = object> = ExtendedProps<PropsOf<T>, Props>;
 export type ComponentProps<T extends React.ElementType, Exclude extends string = never> = React.PropsWithoutRef<Omit<React.ComponentProps<T>, "style" | Exclude>> & {
   style?: CSSProperties;
@@ -121,8 +121,8 @@ const SlotClone = React.forwardRef<any, SlotCloneProps>((props, forwardedRef) =>
       ...mergeProps(slotProps, children.props as AnyProps),
       // @ts-ignore
       ref: forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef,
-      style: { ...slotProps.style, ...children.props.style },
-      className: cn(slotProps.className, children.props.className)
+      style: { ...slotProps.style, ...(children.props as any).style },
+      className: cn(slotProps.className, (children.props as any).className)
     });
   }
 
@@ -189,14 +189,17 @@ export const Root = PolymorphicSlot;
 export function injectComponentIntoFirstChild(children: React.ReactNode, component: React.ReactNode): React.ReactNode {
   // If only one element, add a component at the beginning
   if (React.isValidElement(children)) {
-    return React.cloneElement(children as React.ReactElement, {
-      children: (
-        <>
-          {component}
-          {children.props.children}
-        </>
-      )
-    });
+    return React.cloneElement(
+      children as React.ReactElement,
+      {
+        children: (
+          <>
+            {component}
+            {(children.props as any).children}
+          </>
+        )
+      } as any
+    );
   }
 
   // If children is an array, add a component to the first element
@@ -204,14 +207,17 @@ export function injectComponentIntoFirstChild(children: React.ReactNode, compone
     const [firstChild, ...rest] = children as React.ReactElement[];
     if (React.isValidElement(firstChild as React.ReactElement)) {
       return [
-        React.cloneElement(firstChild as React.ReactElement, {
-          children: (
-            <>
-              {component}
-              {firstChild.props?.children} {/* Access props safely */}
-            </>
-          )
-        }),
+        React.cloneElement(
+          firstChild as React.ReactElement,
+          {
+            children: (
+              <>
+                {component}
+                {(firstChild.props as any)?.children} {/* Access props safely */}
+              </>
+            )
+          } as any
+        ),
         ...rest
       ];
     }

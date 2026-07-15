@@ -7,7 +7,7 @@
  * @param params
  * @returns
  */
-export function pathParams(segment: string, params: string[]) {
+export function pathParams(segment: string, params: string[] | undefined) {
   const cleanedSegment = segment.replace(/\//g, "");
   const path = `/${cleanedSegment}/${params?.join("/") || ""}`;
   return { path, segment: cleanedSegment, params };

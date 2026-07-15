@@ -11,7 +11,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { visit } from "unist-util-visit";
 import { UnistNode } from "../mdx/unist";
 
-import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json" with { type: "json" };
+import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json";
 
 export const behaviors = ["after", "append", "before", "prepend", "wrap"];
 

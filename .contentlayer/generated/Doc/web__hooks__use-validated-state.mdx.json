@@ -1,0 +1,31 @@
+{
+  "title": "useValidatedState",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Manages state with built-in validation logic and returns error state.",
+  "published": true,
+  "summary": "State management with integrated validation and error handling.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-validated-state\" />\n",
+    "code": "var Component=(()=>{var h=Object.create;var o=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,v=Object.prototype.hasOwnProperty;var V=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),g=(t,e)=>{for(var n in e)o(t,n,{get:e[n],enumerable:!0})},s=(t,e,n,l)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of p(e))!v.call(t,i)&&i!==n&&o(t,i,{get:()=>e[i],enumerable:!(l=m(e,i))||l.enumerable});return t};var x=(t,e,n)=>(n=t!=null?h(f(t)):{},s(e||!t||!t.__esModule?o(n,\"default\",{value:t,enumerable:!0}):n,t)),w=t=>s(o({},\"__esModule\",{value:!0}),t);var d=V((C,r)=>{r.exports=_jsx_runtime});var y={};g(y,{default:()=>u,frontmatter:()=>k});var a=x(d()),k={date:\"2025-01-05\",title:\"useValidatedState\",description:\"Manages state with built-in validation logic and returns error state.\",summary:\"State management with integrated validation and error handling.\",component:!0,links:{doc:\"https://\"}};function c(t){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...t.components},{SourceCodes:n}=e;return n||S(\"SourceCodes\",!0),(0,a.jsxs)(a.Fragment,{children:[(0,a.jsx)(e.hr,{}),`\n`,(0,a.jsx)(e.h2,{id:\"source-codes\",children:(0,a.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,a.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,a.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,a.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,a.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,a.jsx)(n,{name:\"use-validated-state\",code:`\"use client\";\nimport { useState } from \"react\";\n\nexport function useValidatedState<T>(initialValue: T, validation: (value: T) => boolean, initialValidationState?: boolean) {\n  const [value, setValue] = useState<T>(initialValue);\n  const [lastValidValue, setLastValidValue] = useState<T | undefined>(validation(initialValue) ? initialValue : undefined);\n  const [valid, setValid] = useState<boolean>(typeof initialValidationState === \"boolean\" ? initialValidationState : validation(initialValue));\n\n  const onChange = (val: T) => {\n    if (validation(val)) {\n      setLastValidValue(val);\n      setValid(true);\n    } else {\n      setValid(false);\n    }\n\n    setValue(val);\n  };\n\n  return [{ value, lastValidValue, valid }, onChange] as const;\n}`,ext:\".ts\",repo:\"web/hooks/use-validated-state.ts\"})]})}function u(t={}){let{wrapper:e}=t.components||{};return e?(0,a.jsx)(e,{...t,children:(0,a.jsx)(c,{...t})}):c(t)}function S(t,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+t+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return w(y);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-validated-state.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-validated-state.mdx",
+    "sourceFileName": "use-validated-state.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-validated-state"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-validated-state",
+  "slug": "hooks/use-validated-state",
+  "url": "/docs/web/hooks/use-validated-state"
+}

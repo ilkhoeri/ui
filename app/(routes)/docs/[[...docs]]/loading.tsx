@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 
 import { Loader } from "@/ui/loader";
 

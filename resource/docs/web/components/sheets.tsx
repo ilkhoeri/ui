@@ -43,9 +43,9 @@ interface SheetsContextProps {
   variant: `${SheetsVariant}`;
   side: "top" | "right" | "bottom" | "left";
   align: "start" | "center" | "end";
-  triggerRef: React.RefObject<HTMLButtonElement>;
-  contentRef: React.RefObject<HTMLDivElement>;
-  overlayRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
   useHideScrollbar(value?: string | undefined): [boolean, number] | undefined;
   triggerBounding: InferType<typeof useElementRect>;
   contentBounding: InferType<typeof useElementRect>;
@@ -355,7 +355,7 @@ interface SheetsItemCtxProps {
   value: string | undefined;
   toggleId: () => void;
   contentHeight: number;
-  contentRef: React.RefObject<HTMLDivElement>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
   dataStateItem: string | undefined;
 }
 

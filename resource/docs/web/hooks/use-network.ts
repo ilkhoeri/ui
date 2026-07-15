@@ -11,10 +11,15 @@ interface NetworkStatus {
   type?: "bluetooth" | "cellular" | "ethernet" | "wifi" | "wimax" | "none" | "other" | "unknown";
 }
 
+function getOnlineStatus() {
+  return typeof navigator !== "undefined" ? navigator.onLine : false;
+}
+
 function getConnection(): NetworkStatus {
   if (typeof navigator === "undefined") return {};
 
-  const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+  const n = navigator as any;
+  const connection = n.connection || n.mozConnection || n.webkitConnection;
 
   if (!connection) return {};
 
@@ -30,22 +35,27 @@ function getConnection(): NetworkStatus {
 
 export function useNetwork() {
   const [status, setStatus] = useState<{ online: boolean } & NetworkStatus>({
-    online: navigator.onLine,
+    online: getOnlineStatus(),
     ...getConnection()
   });
 
   const updateConnectionStatus = useCallback(() => {
     setStatus({
-      online: navigator.onLine,
+      online: getOnlineStatus(),
       ...getConnection()
     });
   }, []);
+
+  useEffect(() => {
+    updateConnectionStatus();
+  }, [updateConnectionStatus]);
 
   useWindowEvent("online", updateConnectionStatus);
   useWindowEvent("offline", updateConnectionStatus);
 
   useEffect(() => {
-    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    const n = navigator as any;
+    const connection = n.connection || n.mozConnection || n.webkitConnection;
 
     if (connection) {
       connection.addEventListener("change", updateConnectionStatus);

@@ -40,27 +40,7 @@ export interface TransitionStyles {
   transitionProperty: React.CSSProperties["transitionProperty"];
 }
 export type TransitionName =
-  | "fade"
-  | "fade-down"
-  | "fade-up"
-  | "fade-left"
-  | "fade-right"
-  | "skew-up"
-  | "skew-down"
-  | "rotate-right"
-  | "rotate-left"
-  | "slide-down"
-  | "slide-up"
-  | "slide-right"
-  | "slide-left"
-  | "scale-y"
-  | "scale-x"
-  | "scale"
-  | "pop"
-  | "pop-top-left"
-  | "pop-top-right"
-  | "pop-bottom-left"
-  | "pop-bottom-right";
+  "fade" | "fade-down" | "fade-up" | "fade-left" | "fade-right" | "skew-up" | "skew-down" | "rotate-right" | "rotate-left" | "slide-down" | "slide-up" | "slide-right" | "slide-left" | "scale-y" | "scale-x" | "scale" | "pop" | "pop-top-left" | "pop-top-right" | "pop-bottom-left" | "pop-bottom-right";
 
 export type Transition = TransitionName | TransitionStyles;
 
@@ -105,7 +85,7 @@ interface UseScrollLockOptions {
 export function useLockScroll(options: UseScrollLockOptions) {
   const { open, transitionDuration } = options;
   const [shouldLockScroll, setShouldLockScroll] = React.useState(open);
-  const timeout = React.useRef<number>();
+  const timeout = React.useRef<number>(0);
   const reduceMotion = useReducedMotion();
   const _transitionDuration = reduceMotion ? 0 : transitionDuration;
 
@@ -133,7 +113,7 @@ interface UseFocusReturnOptions {
 /** Returns focus to last active element, used in Dialog */
 export function useFocusReturn(options: UseFocusReturnOptions) {
   const { open, shouldReturnFocus = true } = options;
-  const lastActiveElement = React.useRef<HTMLElement>();
+  const lastActiveElement = React.useRef<HTMLElement>(null);
   const returnFocus = () => {
     if (lastActiveElement.current && "focus" in lastActiveElement.current && typeof lastActiveElement.current.focus === "function") {
       lastActiveElement.current?.focus({ preventScroll: true });

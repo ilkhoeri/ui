@@ -24,27 +24,25 @@ export default async function Image({ url, params }: { url: string; params: Prom
   const interSemiBold = fetch(new URL("./Inter-SemiBold.ttf", import.meta.url)).then(res => res.arrayBuffer());
 
   return new ImageResponse(
-    (
-      // ImageResponse JSX element
-      <div
-        {...{
-          style: {
-            fontSize: 128,
-            background: "white",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center"
-          }
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={String(logoSrc)} alt="" height="100" />
-        {post.title}
-      </div>
-    ),
+    // ImageResponse JSX element
+    <div
+      {...{
+        style: {
+          fontSize: 128,
+          background: "white",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center"
+        }
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={String(logoSrc)} alt="" height="100" />
+      {post.title}
+    </div>,
     // ImageResponse options
     {
       // For convenience, we can re-use the exported opengraph-image

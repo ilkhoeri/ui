@@ -8,7 +8,7 @@ import { useRehype } from "../rehype/use-rehype";
 
 import type { HighlighterGeneric } from "shiki";
 
-import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json" with { type: "json" };
+import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json";
 
 interface FallbackCode {
   code: string;

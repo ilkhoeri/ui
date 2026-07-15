@@ -74,8 +74,8 @@ function getStyles(selector: Selector, options: Options = {}) {
       !isUnstyled &&
         classes({
           selector,
-          striped: is(selector === "section" && striped, "true"),
-          animated: is(selector === "section" && animated, "true")
+          striped: selector === "section" && striped,
+          animated: selector === "section" && animated
         }),
       classNames?.[selector],
       className

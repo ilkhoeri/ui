@@ -1,0 +1,31 @@
+{
+  "title": "Getting Started",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Create your project and compactness the required dependencies.",
+  "published": true,
+  "summary": "Ringkasan",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "",
+    "code": "var Component=(()=>{var p=Object.create;var a=Object.defineProperty;var x=Object.getOwnPropertyDescriptor;var f=Object.getOwnPropertyNames;var _=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var j=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),l=(t,e)=>{for(var n in e)a(t,n,{get:e[n],enumerable:!0})},c=(t,e,n,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of f(e))!g.call(t,o)&&o!==n&&a(t,o,{get:()=>e[o],enumerable:!(s=x(e,o))||s.enumerable});return t};var h=(t,e,n)=>(n=t!=null?p(_(t)):{},c(e||!t||!t.__esModule?a(n,\"default\",{value:t,enumerable:!0}):n,t)),y=t=>c(a({},\"__esModule\",{value:!0}),t);var d=j((D,i)=>{i.exports=_jsx_runtime});var M={};l(M,{default:()=>u,frontmatter:()=>C});var r=h(d()),C={title:\"Getting Started\",description:\"Create your project and compactness the required dependencies.\",date:\"2025-01-05\",summary:\"Ringkasan\",component:!0,links:{doc:\"https://\"}};function m(t){return(0,r.jsx)(r.Fragment,{})}function u(t={}){let{wrapper:e}=t.components||{};return e?(0,r.jsx)(e,{...t,children:(0,r.jsx)(m,{...t})}):m(t)}return y(M);})();\n;return Component;"
+  },
+  "_id": "web/web.mdx",
+  "_raw": {
+    "sourceFilePath": "web/web.mdx",
+    "sourceFileName": "web.mdx",
+    "sourceFileDir": "web",
+    "contentType": "mdx",
+    "flattenedPath": "web/web"
+  },
+  "type": "Doc",
+  "path": "web/web",
+  "slug": "web",
+  "url": "/docs/web/web"
+}

@@ -22,7 +22,7 @@ export const appRoutes = {
   sections: [
     {
       label: "Github Repository",
-      href: "https://github.com/ilkhoeri/oeri",
+      href: "https://github.com/ilkhoeri/ui",
       icon: Icon.BrandGithubFillIcon,
       color: "#6e5494"
     },
@@ -101,11 +101,11 @@ export const appRoutes = {
     },
     {
       title: "Github",
-      href: "https://github.com/ilkhoeri/oeri/"
+      href: "https://github.com/ilkhoeri/ui/"
     },
     {
       title: "Contributing",
-      href: "https://github.com/ilkhoeri/oeri/blob/master/CONTRIBUTING.md"
+      href: "https://github.com/ilkhoeri/ui/blob/master/CONTRIBUTING.md"
     }
   ]
 };

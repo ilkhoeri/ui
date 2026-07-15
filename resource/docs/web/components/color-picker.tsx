@@ -126,7 +126,7 @@ export const ColorPicker = React.forwardRef<HTMLDivElement, ColorPickerProps>((_
   const { unstyled, classNames, styles, format, value, hueLabel, onChange, alphaLabel, focusable, swatches, withPicker, onChangeEnd, defaultValue, withClipboard, saturationLabel, swatchPerRow = 7, size = 16, round = 6, withShadow = false, onColorSwatchClick, style, fullWidth, children, selectedIcon, ...props } = _props;
 
   const formatRef = React.useRef(format);
-  const valueRef = React.useRef<string>();
+  const valueRef = React.useRef<string>("");
   const scrubTimeoutRef = React.useRef<number>(-1);
   const isScrubbingRef = React.useRef(false);
   const [copied, setCopied] = React.useState(false);

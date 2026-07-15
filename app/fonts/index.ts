@@ -17,18 +17,18 @@ export const playwrite_ro = localFont({
   weight: "100 400"
 });
 
-export const anekTelugu = Anek_Telugu({
-  weight: ["400", "500", "600", "700", "800"],
-  style: ["normal"],
-  subsets: ["latin"],
-  variable: "--ff-anek-telugu",
-  display: "swap"
-});
 export const amiri = Amiri({
   weight: ["400", "700"],
   style: ["normal"],
   subsets: ["latin"],
   variable: "--ff-amiri",
+  display: "swap"
+});
+export const anekTelugu = Anek_Telugu({
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal"],
+  subsets: ["latin"],
+  variable: "--ff-anek-telugu",
   display: "swap"
 });
 export const inter = Inter({

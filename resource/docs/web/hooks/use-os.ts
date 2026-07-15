@@ -6,7 +6,7 @@ import { SvgProps } from "@/ui/svg";
 
 interface OSInfo {
   name: string;
-  icon(props: SvgProps): JSX.Element;
+  icon(props: SvgProps): React.JSX.Element;
 }
 
 const detectorsBrowser = [

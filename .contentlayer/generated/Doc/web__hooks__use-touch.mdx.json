@@ -1,0 +1,31 @@
+{
+  "title": "useTouch",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Detects and tracks touch events like tap, swipe, and long press on mobile devices.",
+  "published": true,
+  "summary": "Hook for touch gesture detection and tracking.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-touch\" />\n",
+    "code": "var Component=(()=>{var h=Object.create;var r=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var v=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,m=Object.prototype.hasOwnProperty;var g=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),w=(n,e)=>{for(var o in e)r(n,o,{get:e[o],enumerable:!0})},i=(n,e,o,c)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of v(e))!m.call(n,s)&&s!==o&&r(n,s,{get:()=>e[s],enumerable:!(c=p(e,s))||c.enumerable});return n};var T=(n,e,o)=>(o=n!=null?h(f(n)):{},i(e||!n||!n.__esModule?r(o,\"default\",{value:n,enumerable:!0}):o,n)),E=n=>i(r({},\"__esModule\",{value:!0}),n);var a=g((O,u)=>{u.exports=_jsx_runtime});var x={};w(x,{default:()=>d,frontmatter:()=>M});var t=T(a()),M={date:\"2025-01-05\",title:\"useTouch\",description:\"Detects and tracks touch events like tap, swipe, and long press on mobile devices.\",summary:\"Hook for touch gesture detection and tracking.\",component:!0,links:{doc:\"https://\"}};function l(n){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...n.components},{SourceCodes:o}=e;return o||L(\"SourceCodes\",!0),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.hr,{}),`\n`,(0,t.jsx)(e.h2,{id:\"source-codes\",children:(0,t.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,t.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,t.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,t.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,t.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,t.jsx)(o,{name:\"use-touch\",code:`\"use client\";\nimport React from \"react\";\n\ninterface UseTouchProps {\n  touch?: boolean;\n  open?: boolean;\n  defaultOpen?: boolean;\n  onOpenChange?: (open: boolean) => void;\n}\n\nexport function useTouch<T extends HTMLElement>(_touch: UseTouchProps) {\n  const { touch = true, defaultOpen = false, onOpenChange, open: openChange } = _touch;\n  const [isOpen, setIsOpen] = React.useState(defaultOpen);\n\n  const triggerRef = React.useRef<T>(null);\n  const open = openChange !== undefined ? openChange : isOpen;\n  const setOpen = onOpenChange !== undefined ? onOpenChange : setIsOpen;\n\n  const [isTouchDevice, setIsTouchDevice] = React.useState(false);\n\n  React.useEffect(() => {\n    const el = triggerRef.current;\n    const onMouseEnter = () => {\n      if (!isTouchDevice) setOpen(true);\n    };\n    const onMouseLeave = () => {\n      if (!isTouchDevice) setOpen(false);\n    };\n    const onMouseMove = () => {\n      if (isTouchDevice) setIsTouchDevice(false);\n    };\n    const onTouchStart = () => {\n      if (!isTouchDevice) setIsTouchDevice(true);\n      setOpen(true);\n    };\n    const onTouchEnd = () => {\n      setOpen(false);\n    };\n\n    const windowTouchStart = () => {\n      if (!isTouchDevice) setIsTouchDevice(true);\n    };\n\n    if (el) {\n      // if touch active\n      if (touch) {\n        el.addEventListener(\"touchstart\", onTouchStart);\n        el.addEventListener(\"touchend\", onTouchEnd);\n      }\n\n      window.addEventListener(\"touchstart\", windowTouchStart);\n      window.addEventListener(\"mousemove\", onMouseMove);\n\n      el.addEventListener(\"mouseenter\", onMouseEnter);\n      el.addEventListener(\"mouseleave\", onMouseLeave);\n      el.addEventListener(\"mousemove\", onMouseMove);\n    }\n\n    return () => {\n      if (el) {\n        // if touch active\n        if (touch) {\n          el.removeEventListener(\"touchstart\", onTouchStart);\n          el.removeEventListener(\"touchend\", onTouchEnd);\n        }\n\n        window.removeEventListener(\"touchstart\", windowTouchStart);\n        window.removeEventListener(\"mousemove\", onMouseMove);\n\n        el.removeEventListener(\"mouseenter\", onMouseEnter);\n        el.removeEventListener(\"mouseleave\", onMouseLeave);\n        el.removeEventListener(\"mousemove\", onMouseMove);\n      }\n    };\n  }, [isTouchDevice, setOpen, triggerRef, touch]);\n\n  return { touch, open, triggerRef };\n}`,ext:\".ts\",repo:\"web/hooks/use-touch.ts\"})]})}function d(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(l,{...n})}):l(n)}function L(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return E(x);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-touch.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-touch.mdx",
+    "sourceFileName": "use-touch.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-touch"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-touch",
+  "slug": "hooks/use-touch",
+  "url": "/docs/web/hooks/use-touch"
+}

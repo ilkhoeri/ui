@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ocx, type cvxResult } from "xuxi";
+import { ocx } from "xuxi";
 import { cn } from "@/utils/cn";
 
 type SubKeys = {
@@ -16,7 +16,7 @@ type classes = {
 };
 
 type __Loader = keyof SubKeys;
-type __Selector<T extends __Loader> = NonNullable<cvxResult<classes>[T]>;
+type __Selector<T extends __Loader> = keyof classes[T];
 type StylesNames<T extends __Loader> = {
   unstyled?: Partial<Record<__Selector<T>, boolean>>;
   className?: string;

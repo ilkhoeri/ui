@@ -15,17 +15,9 @@ const config: NextConfig = withContentlayer({
   // output: "export", // must be exported function "generateStaticParams()", which is required with "output: export" config
   // poweredByHeader: false,
   // swcMinify: true,
+  trailingSlash: true, // Recommended for GitHub Pages
   reactStrictMode: true,
-  experimental: {
-    turbo: {
-      rules: {
-        "*.svg": {
-          loaders: ["@svgr/webpack"],
-          as: "*.js"
-        }
-      }
-    }
-  },
+  experimental: {},
   async rewrites() {
     return [];
   },
@@ -52,8 +44,35 @@ const config: NextConfig = withContentlayer({
     deviceSizes: [375, 640, 768, 1024, 1536, 1920],
     minimumCacheTTL: 60 * 60 * 24,
     formats: ["image/avif", "image/webp"],
-    domains: ["api.microlink.io", "api.dicebear.com", "img.clerk.com", "lh3.googleusercontent.com", "cdn-icons-png.flaticon.com", "images.unsplash.com", "plus.unsplash.com"],
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.microlink.io"
+      },
+      {
+        protocol: "https",
+        hostname: "api.dicebear.com"
+      },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com"
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com"
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com"
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com"
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com"
+      },
       {
         protocol: "https",
         hostname: "res.cloudinary.com"
@@ -83,6 +102,14 @@ const config: NextConfig = withContentlayer({
         pathname: "/**"
       }
     ]
+  },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js"
+      }
+    }
   },
   webpack(config, { isServer }) {
     config.module.rules.push({

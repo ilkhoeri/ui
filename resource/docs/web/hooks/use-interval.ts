@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 export function useInterval(fn: () => void, interval: number) {
   const [active, setActive] = useState(false);
-  const intervalRef = useRef<number>();
-  const fnRef = useRef<() => void>();
+  const intervalRef = useRef<number | undefined>(undefined);
+  const fnRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     fnRef.current = fn;

@@ -30,7 +30,7 @@ interface Suggestion {
   id: string;
   label: string;
   href: string;
-  leftSection: JSX.Element;
+  leftSection: React.JSX.Element;
 }
 interface FilterResult {
   group: string;

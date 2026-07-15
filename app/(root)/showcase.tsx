@@ -473,7 +473,9 @@ export function DropdownNotifications() {
                           <Tooltip asChild side="left" content={`${notif.priority} Priority`} classNames={{ content: "capitalize px-2 py-1 text-xs font-medium" }}>
                             <span role="button" tabIndex={-1} aria-label={notif.source} className={priorityVariants({ ...notif })} />
                           </Tooltip>
-                          <Times format="default" time={notif.receivedAt} className="text-xs font-medium text-muted-foreground" />
+                          <ClientOnly>
+                            <Times format="default" time={notif.receivedAt} className="text-xs font-medium text-muted-foreground" />
+                          </ClientOnly>
                         </div>
                       </div>
                     );
@@ -596,6 +598,7 @@ const somePeriodic = [
 ];
 
 import { Command, type CommandActionGroupData } from "@/ui/command";
+import { ClientOnly } from "@/source/assets/client-only";
 // import { Svg } from "@/ui/svg";
 
 const ICONSIZE = 24;

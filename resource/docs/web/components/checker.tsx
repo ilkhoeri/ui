@@ -35,13 +35,14 @@ const classes = cvx({
 type __KeyVar = keyof cvxVariants<typeof classes>;
 type __Selector<K extends __KeyVar> = NonNullable<cvxVariants<typeof classes>[K]>;
 type CSSProperties = React.CSSProperties & { [key: string]: any };
-type StylesNames<K extends __KeyVar, Exclude extends string = never> = Omit<
+
+type StylesNames<K extends string, Exclude extends string = never> = Omit<
   {
     className?: string;
     style?: CSSProperties;
-    classNames?: Partial<Record<__Selector<K>, string>>;
-    styles?: Partial<Record<__Selector<K>, CSSProperties>>;
-    unstyled?: Partial<Record<__Selector<K>, boolean>>;
+    classNames?: { [P in K]?: string };
+    styles?: { [P in K]?: CSSProperties };
+    unstyled?: { [P in K]?: boolean };
   },
   Exclude
 >;
@@ -80,7 +81,7 @@ const checkerDefault: CheckerType = "switch";
 const ctx = React.createContext<CtxProps | undefined>(undefined);
 const useCheckerGroupCtx = () => React.useContext(ctx)!;
 
-export interface CheckerGroupProps extends ComponentProps<"div", "children" | "color" | "defaultValue" | "onChange">, StylesNames<"checkerGroup">, __CheckerGroupProps {
+export interface CheckerGroupProps extends ComponentProps<"div", "children" | "color" | "defaultValue" | "onChange">, StylesNames<__Selector<"checkerGroup">>, __CheckerGroupProps {
   name?: string;
   children: React.ReactNode;
   value?: string | string[] | null;
@@ -155,7 +156,7 @@ export const CheckerGroup = React.forwardRef<HTMLDivElement, CheckerGroupProps>(
 CheckerGroup.displayName = "Checker/CheckerGroup";
 
 type PickFromGroup = "error" | "required" | "indeterminate" | "readOnly" | "round" | "labelPosition" | "type";
-interface __CheckerCardProps extends ComponentProps<"button", "size" | "color" | "type" | "onChange">, Pick<__CheckerGroupProps, PickFromGroup>, StylesNames<"checkerGroup"> {
+interface __CheckerCardProps extends ComponentProps<"button", "size" | "color" | "type" | "onChange">, Pick<__CheckerGroupProps, PickFromGroup>, StylesNames<__Selector<"checkerGroup">> {
   id?: string;
   dir?: "ltr" | "rtl";
   checked?: boolean;
@@ -251,7 +252,7 @@ interface __CheckerProps extends __CheckerGroupProps {
   rootProps?: React.PropsWithRef<Component<"label">>;
 }
 
-export interface CheckerProps extends ComponentProps<"input", "size" | "children" | "color" | "type" | "onChange">, __CheckerProps, StylesNames<"checker"> {
+export interface CheckerProps extends ComponentProps<"input", "size" | "children" | "color" | "type" | "onChange">, __CheckerProps, StylesNames<__Selector<"checker">> {
   id?: string;
   onCheckedChange?: ComponentProps<"input">["onChange"];
 }
@@ -382,7 +383,7 @@ export function IconDefault(
 function state<T>(val: T) {
   return val ? "true" : undefined;
 }
-function checkerGroupStyles(selector: __Selector<"checkerGroup">, options: StylesNames<"checkerGroup"> & __CheckerGroupProps = {}) {
+function checkerGroupStyles(selector: __Selector<"checkerGroup">, options: StylesNames<__Selector<"checkerGroup">> & __CheckerGroupProps = {}) {
   const { unstyled, className, classNames, style, styles, disabled, error, required, label, round, description, checked, labelPosition } = options;
   function selected<T>(select: __Selector<"checkerGroup">, state: T) {
     return selector === select ? (state as T) : undefined;
@@ -401,7 +402,7 @@ function checkerGroupStyles(selector: __Selector<"checkerGroup">, options: Style
         selected("group", label || description ? "mt-2.5" : undefined),
         classes({
           checkerGroup: selector,
-          withAsterisk: selected("label", state(required))
+          withAsterisk: selected("label", required)
         })
       ],
       classNames?.[selector],
@@ -414,7 +415,7 @@ function checkerGroupStyles(selector: __Selector<"checkerGroup">, options: Style
     }
   };
 }
-function checkerStyles(selector: __Selector<"checker">, options: StylesNames<"checker"> & __CheckerProps = {}) {
+function checkerStyles(selector: __Selector<"checker">, options: StylesNames<__Selector<"checker">> & __CheckerProps = {}) {
   const { unstyled, className, classNames, style, styles, checked, disabled, required, error, size = 20, round, labelPosition = "right", type, indeterminate, color = "hsl(var(--constructive))" } = options;
   function selected<T>(select: __Selector<"checker">, state: T) {
     return selector === select ? (state as T) : undefined;
@@ -434,7 +435,7 @@ function checkerStyles(selector: __Selector<"checker">, options: StylesNames<"ch
         selected("root", rootClass),
         classes({
           checker: selector,
-          withAsterisk: selected("label", state(required))
+          withAsterisk: selected("label", required)
         })
       ],
       classNames?.[selector],

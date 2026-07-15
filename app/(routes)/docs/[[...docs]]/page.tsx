@@ -7,11 +7,26 @@ import { ArticleContent } from "@/source/assets/toc/context";
 
 import type { Metadata, ResolvingMetadata } from "next";
 
-interface DocsParams {
-  params: Promise<{ docs: string[] }>;
+export function generateStaticParams() {
+  const docs = allDocs.map(doc => ({ docs: doc._raw.flattenedPath.split("/") }));
+  return [
+    {
+      docs: []
+    },
+    { docs: ["web", "components"] },
+    { docs: ["web", "hooks"] },
+    { docs: ["web", "utilities"] },
+    { docs: ["web", "configuration"] },
+    ...docs
+  ];
 }
 
-function getDocFromParams(slug: string[]) {
+interface DocsParams {
+  params: Promise<{ docs?: string[] | undefined }>;
+}
+
+function getDocFromParams(slug: string[] | undefined) {
+  if (!slug) return null;
   const { path, segment } = pathParams("docs", slug);
   const doc = allDocs.find(doc => doc.url === (slug ? path : segment));
   if (!doc) return null;

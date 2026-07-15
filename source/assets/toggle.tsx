@@ -33,7 +33,7 @@ export const GetCodeButton = React.forwardRef<
 
   return (
     <Tooltip asChild {...sharedProp} content="Repository" contentProps={{ className: "min-w-[86px]" }}>
-      <Anchor ref={ref} {...props} target="_blank" rel="noopener noreferrer nofollow" href={href || `https://github.com/ilkhoeri/oeri/tree/master/resource/docs/${repo}`} tabIndex={-1} title="Get Code" className={globalStyle({ toggle: "item", size: "icon-xs" }, className)}>
+      <Anchor ref={ref} {...props} target="_blank" rel="noopener noreferrer nofollow" href={href || `https://github.com/ilkhoeri/ui/tree/main/resource/docs/${repo}`} tabIndex={-1} title="Get Code" className={globalStyle({ toggle: "item", size: "icon-xs" }, className)}>
         <BrandGithubFillIcon fill="currentColor" size={SIZE_ICON} />
       </Anchor>
     </Tooltip>

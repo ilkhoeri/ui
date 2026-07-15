@@ -1,13 +1,13 @@
 "use client";
-import { useCallback, Ref, useRef, MutableRefObject } from "react";
+import { useCallback, Ref, useRef, RefObject } from "react";
 
-export type PossibleRef<T> = Ref<T> | MutableRefObject<T | null> | undefined;
+export type PossibleRef<T> = Ref<T> | RefObject<T | null> | undefined;
 
 export function assignRef<T>(ref: PossibleRef<T>, value: T) {
   if (typeof ref === "function") {
     ref(value);
   } else if (typeof ref === "object" && ref !== null && "current" in ref) {
-    (ref as MutableRefObject<T>).current = value;
+    (ref as RefObject<T | null>).current = value;
   }
 }
 
@@ -17,13 +17,13 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]) {
   };
 }
 
-export function createRefs<F, U extends string>(keys: U[]): { [K in U]: React.RefObject<F> } {
+export function createRefs<F, U extends string>(keys: U[]): { [K in U]: React.RefObject<F | null> } {
   return keys.reduce(
     (acc, key) => {
       acc[key] = useRef<F>(null);
       return acc;
     },
-    {} as { [K in U]: React.RefObject<F> }
+    {} as { [K in U]: React.RefObject<F | null> }
   );
 }
 

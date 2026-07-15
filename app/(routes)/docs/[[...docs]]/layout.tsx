@@ -8,11 +8,26 @@ import { MDXComponent } from "@/resource/docs_demo/assets/mdx/mdx-context";
 import { restRoutes, metaDocsRoute, MetaDocsRoute, NestedMetaDocsRoute } from "@/routes";
 import { ArticleContent, TableOfContentsProvider } from "@/source/assets/toc/context";
 import { getTableOfContents } from "@/source/assets/toc/config";
-import { Typography } from "@/ui/typography";
+import { typographyVariant } from "@/ui/typography";
+import { allDocs } from "contentlayer/generated";
+
+export function generateStaticParams() {
+  const docs = allDocs.map(doc => ({ docs: doc._raw.flattenedPath.split("/") }));
+  return [
+    {
+      docs: []
+    },
+    { docs: ["web", "components"] },
+    { docs: ["web", "hooks"] },
+    { docs: ["web", "utilities"] },
+    { docs: ["web", "configuration"] },
+    ...docs
+  ];
+}
 
 interface DocsParams {
   children: React.ReactNode;
-  params: Promise<{ docs: string[] }>;
+  params: Promise<{ docs?: string[] | undefined }>;
 }
 
 export default async function Layout({ children, params }: DocsParams) {
@@ -36,15 +51,15 @@ export default async function Layout({ children, params }: DocsParams) {
   if (!slug && doc)
     return template(
       <ArticleContent>
-        <Typography prose="h1">{doc?.title}</Typography>
+        <h1 className={typographyVariant({ prose: "h1" })}>{doc?.title}</h1>
         <MDXComponent code={doc?.body.code} />
       </ArticleContent>
     );
 
-  if (slug.length === 2) {
+  if (slug?.length === 2) {
     const routesMap: { [key: string]: any } = restRoutes;
-    const slugMap = routesMap[slug[1]];
-    return template(<RestDocs id={slug[1]} routes={slugMap} />);
+    const slugMap = routesMap[slug?.[1]];
+    return template(<RestDocs id={slug?.[1]} routes={slugMap} />);
   }
 
   if (!findMatchingRoute(slug, metaDocsRoute)) notFound();
@@ -52,8 +67,8 @@ export default async function Layout({ children, params }: DocsParams) {
   return template(children);
 }
 
-const findMatchingRoute = (slug: string[], routes: (MetaDocsRoute | NestedMetaDocsRoute)[]): boolean => {
-  const matcher = `/docs/${slug.join("/")}`;
+const findMatchingRoute = (slug: string[] | undefined, routes: (MetaDocsRoute | NestedMetaDocsRoute)[]): boolean => {
+  const matcher = `/docs/${slug?.join("/")}`;
 
   for (const route of routes) {
     if ("path" in route && route.path === matcher) return true;

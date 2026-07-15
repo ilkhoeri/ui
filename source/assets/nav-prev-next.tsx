@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import { Svg } from "@/ui/svg";

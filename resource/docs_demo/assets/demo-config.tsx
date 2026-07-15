@@ -92,7 +92,7 @@ export function ConfiguratorDemo(_props: ConfiguratorDemoProps) {
     case "horizontal":
       return (
         <Tabs defaultValue="preview" classNames={{ root: "mb-20 mt-10 w-full", list: "rtl:flex-row-reverse" }}>
-          <PlayTabs defaultValue="preview" defaultExpanded="undefined" childrens={{ preview: _democolumns, usage: _democode }} />
+          <PlayTabs defaultValue="preview" defaultExpanded={undefined} childrens={{ preview: _democolumns, usage: _democode }} />
         </Tabs>
       );
     case "vertical":

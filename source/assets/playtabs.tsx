@@ -25,9 +25,9 @@ enum _PlayDisplay {
 }
 
 enum Expands {
-  "expand" = "expand",
+  expand = "expand",
   "expand-full" = "expand-full",
-  "collapse" = "collapse"
+  collapse = "collapse"
 }
 type _PlayOrigin = "tablist" | "content" | "expand";
 
@@ -91,7 +91,7 @@ export interface PlayTabsProps extends RecordNested<"childrens", _PlayDisplay, R
 }
 export function PlayTabs(_Play: PlayTabsProps) {
   const { childrens, defaultExpanded = "expand", defaultValue = "code", classNames } = _Play;
-  const isExpand = defaultExpanded !== "undefined";
+  const isExpand = defaultExpanded !== undefined;
   const use = useExpand({ defaultExpanded: isExpand ? defaultExpanded : undefined });
   const [parentRef, setParentRef] = React.useState<HTMLDivElement | null>(null);
   const [controlsRefs, setControlsRefs] = React.useState<Record<string, HTMLButtonElement | null>>({});

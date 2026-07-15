@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -10,7 +10,7 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "noEmit": true,
     "strict": true,
     "allowJs": true,
@@ -20,7 +20,11 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "baseUrl": ".",
-    "plugins": [{ "name": "next" }],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "noEmitOnError": true,
     "paths": {
       "@/hooks/*": ["./resource/docs/web/hooks/*"],
@@ -36,6 +40,6 @@
     },
     "typeRoots": ["resource/docs/*", "./node_modules/@types"]
   },
-  "include": ["./src", "./types", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.md", "**/*.mdx", ".next/types/**/*.ts", "resource/docs/**/*.ts", "resource/docs/**/*.tsx", ".contentlayer/generated", ".notif.ts"],
+  "include": ["./src", "./types", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.md", "**/*.mdx", ".next/types/**/*.ts", "resource/docs/**/*.ts", "resource/docs/**/*.tsx", ".contentlayer/generated", ".notif.ts", ".next/dev/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

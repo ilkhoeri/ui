@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import React, { createContext, useContext, ReactNode, useEffect } from "react";
+import { createContext, useContext, ReactNode, useEffect } from "react";
 import { useOpenState, type ClickOpenOptions } from "@/hooks/use-open-state";
 import { useMediaQuery } from "@/hooks/use-media-query";
 

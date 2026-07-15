@@ -26,7 +26,7 @@ function toInt(value?: string) {
 interface UseFloatingIndicatorInput {
   target: HTMLElement | null | undefined;
   parent: HTMLElement | null | undefined;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement | null>;
   displayAfterTransitionEnd?: boolean;
 }
 export function useFloatingIndicator({ target, parent, ref, displayAfterTransitionEnd }: UseFloatingIndicatorInput) {

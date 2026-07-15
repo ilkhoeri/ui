@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
+const SITE_URL = "https://ilkhoeri.github.io/ui";
+
 export function absoluteUrl(path: string) {
-  return `${process.env.SITE_URL}${path}`;
+  return `${SITE_URL}${path}`;
 }
 
 export const siteConfig = {
   creator: "@ilkhoeri",
-  url: `${process.env.SITE_URL}`,
+  url: `${SITE_URL}`,
   email: "khoeriilham@gmail.com",
   name: "Oeri UI",
   ogImage: "/assets/images/homepage.webp",

@@ -43,7 +43,7 @@ type CtxProps = __PaginationProps & {
 function getStyles(selector: __Selector, options?: Options) {
   return {
     "data-pgn": cn(selector),
-    className: cn(!options?.unstyled?.[selector] && classes({ selector, active: options?.active ? "true" : undefined }), options?.classNames?.[selector], options?.className),
+    className: cn(!options?.unstyled?.[selector] && classes({ selector, active: options?.active }), options?.classNames?.[selector], options?.className),
     style: {
       ...options?.styles?.[selector],
       ...options?.style
@@ -201,7 +201,7 @@ const PaginationRoot = React.forwardRef<HTMLDivElement, PaginationRootProps>((_p
 });
 PaginationRoot.displayName = "Pagination/PaginationRoot";
 
-type InheritedProps<T extends React.ElementType, OverrideProps = object> = OverrideProps & Omit<JSX.LibraryManagedAttributes<T, React.ComponentPropsWithoutRef<T>>, keyof OverrideProps>;
+type InheritedProps<T extends React.ElementType, OverrideProps = object> = OverrideProps & Omit<React.JSX.LibraryManagedAttributes<T, React.ComponentPropsWithoutRef<T>>, keyof OverrideProps>;
 type PolymorphicType<T extends React.ElementType, Props = object> = InheritedProps<T, { el?: T | (React.ElementType & {}) } & Props>;
 type PolymorphicRef<T extends React.ElementType> = React.ComponentPropsWithRef<T>["ref"];
 

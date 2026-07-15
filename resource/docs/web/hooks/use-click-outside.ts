@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const DEFAULTEVENTS = ["mousedown", "touchstart"];
 
-export function useClickOutside(handler: () => void, refs: React.RefObject<HTMLElement>[], events: string[] = DEFAULTEVENTS) {
+export function useClickOutside(handler: () => void, refs: React.RefObject<HTMLElement | null>[], events: string[] = DEFAULTEVENTS) {
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
       const { target } = event;

@@ -18,7 +18,7 @@ type TooltipProviderTypes = Primitive.TooltipProviderProps & Primitive.TooltipPr
 
 interface CtxProps extends Omit<TooltipProviderTypes, "children"> {
   touch?: boolean;
-  triggerRef: React.RefObject<HTMLButtonElement>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 }
 interface ProviderProps extends Omit<CtxProps, "triggerRef"> {
   children: React.ReactNode;

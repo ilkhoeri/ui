@@ -19,8 +19,8 @@ export function useSnapPoints({
   setActiveSnapPointProp?(snapPoint: number | null | string): void;
   snapPoints?: (number | string)[];
   fadeFromIndex?: number;
-  drawerRef: React.RefObject<HTMLDivElement>;
-  overlayRef: React.RefObject<HTMLDivElement>;
+  drawerRef: React.RefObject<HTMLDivElement | null>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
   onSnapPointChange(activeSnapPointIndex: number): void;
   direction?: DrawerDirection;
 }) {
@@ -80,18 +80,18 @@ export function useSnapPoints({
     (dimension: number) => {
       const newSnapPointIndex = snapPointsOffset?.findIndex(snapPointDim => snapPointDim === dimension) ?? null;
       onSnapPointChange(newSnapPointIndex);
-      set(drawerRef.current, {
+      set(drawerRef?.current, {
         transition: `transform ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(",")})`,
         transform: isVertical(direction) ? `translate3d(0, ${dimension}px, 0)` : `translate3d(${dimension}px, 0, 0)`
       });
 
       if (snapPointsOffset && newSnapPointIndex !== snapPointsOffset.length - 1 && newSnapPointIndex !== fadeFromIndex) {
-        set(overlayRef.current, {
+        set(overlayRef?.current, {
           transition: `opacity ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(",")})`,
           opacity: "0"
         });
       } else {
-        set(overlayRef.current, {
+        set(overlayRef?.current, {
           transition: `opacity ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(",")})`,
           opacity: "1"
         });
@@ -99,7 +99,7 @@ export function useSnapPoints({
 
       setActiveSnapPoint(newSnapPointIndex !== null ? snapPoints?.[newSnapPointIndex] : null);
     },
-    [drawerRef.current, snapPoints, snapPointsOffset, fadeFromIndex, overlayRef, setActiveSnapPoint]
+    [drawerRef?.current, snapPoints, snapPointsOffset, fadeFromIndex, overlayRef, setActiveSnapPoint]
   );
 
   React.useEffect(() => {
@@ -120,7 +120,7 @@ export function useSnapPoints({
     const hasDraggedUp = draggedDistance > 0;
 
     if (isOverlaySnapPoint) {
-      set(overlayRef.current, {
+      set(overlayRef?.current, {
         transition: `opacity ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(",")})`
       });
     }
@@ -180,7 +180,7 @@ export function useSnapPoints({
       return;
     }
 
-    set(drawerRef.current, {
+    set(drawerRef?.current, {
       transform: isVertical(direction) ? `translate3d(0, ${newValue}px, 0)` : `translate3d(${newValue}px, 0, 0)`
     });
   }

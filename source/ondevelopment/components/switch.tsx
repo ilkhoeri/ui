@@ -34,13 +34,13 @@ const classes = cvx({
 type __KeyVar = keyof cvxVariants<typeof classes>;
 type __Selector<K extends __KeyVar> = NonNullable<cvxVariants<typeof classes>[K]>;
 type CSSProperties = React.CSSProperties & { [key: string]: any };
-type StylesNames<K extends __KeyVar, Exclude extends string = never> = Omit<
+type StylesNames<K extends string, Exclude extends string = never> = Omit<
   {
     className?: string;
     style?: CSSProperties;
-    classNames?: Partial<Record<__Selector<K>, string>>;
-    styles?: Partial<Record<__Selector<K>, CSSProperties>>;
-    unstyled?: Partial<Record<__Selector<K>, boolean>>;
+    classNames?: Partial<Record<K, string>>;
+    styles?: Partial<Record<K, CSSProperties>>;
+    unstyled?: Partial<Record<K, boolean>>;
   },
   Exclude
 >;
@@ -73,7 +73,7 @@ interface __SwitchGroupProps extends __Props {
   id?: string;
 }
 
-interface SwitchGroupProps extends ComponentProps<"div", "children" | "color" | "defaultValue" | "onChange">, StylesNames<"switchGroup">, __SwitchGroupProps {
+interface SwitchGroupProps extends ComponentProps<"div", "children" | "color" | "defaultValue" | "onChange">, StylesNames<__Selector<"switchGroup">>, __SwitchGroupProps {
   children: React.ReactNode;
   value?: string[];
   defaultValue?: string[];
@@ -153,7 +153,7 @@ interface __SwitchProps extends __SwitchGroupProps {
   rootRef?: React.ForwardedRef<HTMLDivElement>;
 }
 
-interface SwitchProps extends ComponentProps<"input", "size" | "children" | "color">, __SwitchProps, StylesNames<"switch"> {
+interface SwitchProps extends ComponentProps<"input", "size" | "children" | "color">, __SwitchProps, StylesNames<__Selector<"switch">> {
   id?: string;
 }
 
@@ -241,7 +241,7 @@ Switch.displayName = "Switch";
 function state<T>(val: T) {
   return val ? "true" : undefined;
 }
-function switchGroupStyles(selector: __Selector<"switchGroup">, options: StylesNames<"switchGroup"> & __SwitchGroupProps = {}) {
+function switchGroupStyles(selector: __Selector<"switchGroup">, options: StylesNames<__Selector<"switchGroup">> & __SwitchGroupProps = {}) {
   const { unstyled, className, classNames, style, styles, disabled, error, required, id, label, description } = options;
   function selected<T>(select: __Selector<"switchGroup">, state: T) {
     return selector === select ? (state as T) : undefined;
@@ -257,7 +257,7 @@ function switchGroupStyles(selector: __Selector<"switchGroup">, options: StylesN
         selected("group", label || description ? "mt-2.5" : undefined),
         classes({
           switchGroup: selector,
-          withAsterisk: selected("label", state(required))
+          withAsterisk: selected("label", required)
         })
       ],
       classNames?.[selector],
@@ -269,7 +269,7 @@ function switchGroupStyles(selector: __Selector<"switchGroup">, options: StylesN
     }
   };
 }
-function switchStyles(selector: __Selector<"switch">, options: StylesNames<"switch"> & __SwitchProps = {}) {
+function switchStyles(selector: __Selector<"switch">, options: StylesNames<__Selector<"switch">> & __SwitchProps = {}) {
   const { unstyled, className, classNames, style, styles, disabled, required, onLabel, offLabel, error, size = 20, round = 9999, labelPosition = "right", color = "hsl(var(--constructive))" } = options;
   function selected<T>(select: __Selector<"switch">, state: T) {
     return selector === select ? (state as T) : undefined;
@@ -286,7 +286,7 @@ function switchStyles(selector: __Selector<"switch">, options: StylesNames<"swit
       !unstyled?.[selector] &&
         classes({
           switch: selector,
-          withAsterisk: selected("label", state(required))
+          withAsterisk: selected("label", required)
         }),
       classNames?.[selector],
       className

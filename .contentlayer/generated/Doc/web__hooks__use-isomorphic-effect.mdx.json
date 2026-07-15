@@ -1,0 +1,31 @@
+{
+  "title": "useIsomorphicEffect",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "A safe useLayoutEffect alternative that falls back to useEffect on the server to prevent hydration warnings.",
+  "published": true,
+  "summary": "Isomorphic useLayoutEffect that works in SSR and browser.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-isomorphic-effect\" />\n",
+    "code": "var Component=(()=>{var d=Object.create;var n=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,w=Object.prototype.hasOwnProperty;var x=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),g=(t,e)=>{for(var r in e)n(t,r,{get:e[r],enumerable:!0})},i=(t,e,r,c)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of p(e))!w.call(t,s)&&s!==r&&n(t,s,{get:()=>e[s],enumerable:!(c=h(e,s))||c.enumerable});return t};var y=(t,e,r)=>(r=t!=null?d(m(t)):{},i(e||!t||!t.__esModule?n(r,\"default\",{value:t,enumerable:!0}):r,t)),k=t=>i(n({},\"__esModule\",{value:!0}),t);var f=x((j,a)=>{a.exports=_jsx_runtime});var L={};g(L,{default:()=>u,frontmatter:()=>E});var o=y(f()),E={date:\"2025-01-05\",title:\"useIsomorphicEffect\",description:\"A safe useLayoutEffect alternative that falls back to useEffect on the server to prevent hydration warnings.\",summary:\"Isomorphic useLayoutEffect that works in SSR and browser.\",component:!0,links:{doc:\"https://\"}};function l(t){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...t.components},{SourceCodes:r}=e;return r||v(\"SourceCodes\",!0),(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(e.hr,{}),`\n`,(0,o.jsx)(e.h2,{id:\"source-codes\",children:(0,o.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,o.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,o.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,o.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,o.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,o.jsx)(r,{name:\"use-isomorphic-effect\",code:`\"use client\";\nimport { useEffect, useLayoutEffect } from \"react\";\n\n// useLayoutEffect will show warning if used during ssr, e.g. with Next.js\n// useIsomorphicEffect removes it by replacing useLayoutEffect with useEffect during ssr\nexport const useIsomorphicEffect = typeof document !== \"undefined\" ? useLayoutEffect : useEffect;`,ext:\".ts\",repo:\"web/hooks/use-isomorphic-effect.ts\"})]})}function u(t={}){let{wrapper:e}=t.components||{};return e?(0,o.jsx)(e,{...t,children:(0,o.jsx)(l,{...t})}):l(t)}function v(t,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+t+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return k(L);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-isomorphic-effect.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-isomorphic-effect.mdx",
+    "sourceFileName": "use-isomorphic-effect.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-isomorphic-effect"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-isomorphic-effect",
+  "slug": "hooks/use-isomorphic-effect",
+  "url": "/docs/web/hooks/use-isomorphic-effect"
+}

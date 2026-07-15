@@ -38,7 +38,7 @@ export function useMediaQuery(
   }
 ) {
   const [matches, setMatches] = useState(getInitialValueInEffect ? initialValue : getInitialValue(query, initialValue));
-  const queryRef = useRef<MediaQueryList>();
+  const queryRef = useRef<MediaQueryList>(null);
 
   useEffect(() => {
     if ("matchMedia" in window) {

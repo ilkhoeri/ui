@@ -38,10 +38,8 @@ type StylesNames<T extends string, Exclude extends string = never> = Omit<Nested
 function getStyles(selector: __CodeSelector, options: Options = {}) {
   const { dir, block, quote, unstyled, className, classNames, style, styles, color, bg, code, samp, label } = options;
   const switchRoot = code && samp;
-  function is<T>(i: T) {
-    return (i as T) ? "true" : "false";
-  }
-  const switchClass = [classes({ block: is(block) }), classes({ quote: is(quote) }), classes({ label: is(label) })];
+
+  const switchClass = [classes({ block: block }), classes({ quote: quote }), classes({ label: !!label })];
   return {
     dir: dir,
     className: cn(!unstyled?.[selector] && classes({ selector }), selector === "pre" && switchRoot && [switchClass, "grid grid-flow-row space-y-4"], selector === "code" && !switchRoot && !unstyled?.code && [switchClass, { "[&>samp]:whitespace-normal": block }], classNames?.[selector], className),

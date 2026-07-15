@@ -70,7 +70,7 @@ export type TransformProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<H
       };
 };
 
-export const observeIntersection = (ref: React.RefObject<HTMLElement>, { hold = 0.1, opacity, withoutOpacity, transform }: TransformProps) => {
+export const observeIntersection = (ref: React.RefObject<HTMLElement | null>, { hold = 0.1, opacity, withoutOpacity, transform }: TransformProps) => {
   const windowHeight = window.innerHeight;
   const threshold = windowHeight * hold;
 

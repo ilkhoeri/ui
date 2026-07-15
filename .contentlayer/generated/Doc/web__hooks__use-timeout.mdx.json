@@ -1,0 +1,31 @@
+{
+  "title": "useTimeout",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Executes a function after a specified delay, with built-in control to start, stop, or reset.",
+  "published": true,
+  "summary": "Delays function execution with control over timeout lifecycle.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-timeout\" />\n",
+    "code": "var Component=(()=>{var f=Object.create;var s=Object.defineProperty;var m=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var h=Object.getPrototypeOf,k=Object.prototype.hasOwnProperty;var x=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),v=(t,e)=>{for(var o in e)s(t,o,{get:e[o],enumerable:!0})},c=(t,e,o,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of p(e))!k.call(t,r)&&r!==o&&s(t,r,{get:()=>e[r],enumerable:!(a=m(e,r))||a.enumerable});return t};var y=(t,e,o)=>(o=t!=null?f(h(t)):{},c(e||!t||!t.__esModule?s(o,\"default\",{value:t,enumerable:!0}):o,t)),w=t=>c(s({},\"__esModule\",{value:!0}),t);var i=x((C,l)=>{l.exports=_jsx_runtime});var R={};v(R,{default:()=>d,frontmatter:()=>b});var n=y(i()),b={date:\"2025-01-05\",title:\"useTimeout\",description:\"Executes a function after a specified delay, with built-in control to start, stop, or reset.\",summary:\"Delays function execution with control over timeout lifecycle.\",component:!0,links:{doc:\"https://\"}};function u(t){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...t.components},{SourceCodes:o}=e;return o||g(\"SourceCodes\",!0),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.hr,{}),`\n`,(0,n.jsx)(e.h2,{id:\"source-codes\",children:(0,n.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,n.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,n.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,n.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,n.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,n.jsx)(o,{name:\"use-timeout\",code:`\"use client\";\nimport { useCallback, useEffect, useRef } from \"react\";\n\nexport function getEnv() {\n  if (typeof process !== \"undefined\" && process.env && process.env.NODE_ENV) {\n    return process.env.NODE_ENV;\n  }\n  return \"development\";\n}\n\nexport function useTimeout(callback: (...callbackParams: any[]) => void, delay: number, options: { autoInvoke: boolean } = { autoInvoke: false }) {\n  const timeoutRef = useRef<number | null>(null);\n\n  const start = useCallback(\n    (...callbackParams: any[]) => {\n      if (!timeoutRef.current) {\n        timeoutRef.current = window.setTimeout(() => {\n          callback(callbackParams);\n          timeoutRef.current = null;\n        }, delay);\n      }\n    },\n    [delay]\n  );\n  const clear = useCallback(() => {\n    if (timeoutRef.current) {\n      window.clearTimeout(timeoutRef.current);\n      timeoutRef.current = null;\n    }\n  }, []);\n  useEffect(() => {\n    if (options.autoInvoke) {\n      start();\n    }\n    return clear;\n  }, [clear, start]);\n\n  return { start, clear };\n}`,ext:\".ts\",repo:\"web/hooks/use-timeout.ts\"})]})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(u,{...t})}):u(t)}function g(t,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+t+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return w(R);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-timeout.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-timeout.mdx",
+    "sourceFileName": "use-timeout.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-timeout"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-timeout",
+  "slug": "hooks/use-timeout",
+  "url": "/docs/web/hooks/use-timeout"
+}

@@ -55,7 +55,7 @@ export function TableOfContents({ toc, sub }: TocProps) {
   const activeItem = useActiveItem(itemIds);
 
   const paths = pathname.split("/").slice(2).filter(Boolean);
-  const editPageLink = paths.length > 1 ? `https://github.com/ilkhoeri/oeri/edit/master/resource/docs_raw/${sourceFile(paths)}.mdx` : "";
+  const editPageLink = paths.length > 1 ? `https://github.com/ilkhoeri/ui/edit/main/resource/docs_raw/${sourceFile(paths)}.mdx` : "";
 
   const isAvailableTOC = min_lg && toc?.items && toc?.items?.length > 1;
 

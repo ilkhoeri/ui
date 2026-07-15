@@ -1,4 +1,3 @@
-import React from "react";
 import { Stack, type StackProps } from "@/ui/stack";
 import { Button } from "@/ui/button";
 import { Group } from "@/ui/group";

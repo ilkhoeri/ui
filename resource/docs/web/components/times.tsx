@@ -68,13 +68,15 @@ export const Times = React.forwardRef<HTMLTimeElement, TimesProps>((_props, ref)
   if (format === "default") {
     const { localeString, locales, ...rest } = props as TimeDefaultProps;
     const content = children || (time && getTime(time, { locales, ...localeString }));
-    return <time {...{ ref, dateTime: String(time), suppressHydrationWarning, ...rest }}>{content}</time>;
+    // const dateTime = typeof window === "undefined" ? undefined : String(time);
+    return <time {...{ ref, suppressHydrationWarning, ...rest }}>{content}</time>;
   }
 
   if (format === "time-ago") {
     const { locales, diff, ...rest } = props as TimeAgoProps;
     const content = children || (time && getTimeAgo(new Date(String(time)), { locales, diff }));
-    return <time {...{ ref, dateTime: String(time), suppressHydrationWarning, ...rest }}>{content}</time>;
+    // const dateTime = typeof window === "undefined" ? undefined : String(time);
+    return <time {...{ ref, suppressHydrationWarning, ...rest }}>{content}</time>;
   }
 
   return null;

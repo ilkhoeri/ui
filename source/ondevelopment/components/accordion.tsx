@@ -59,8 +59,8 @@ AccordionTrigger.displayName = "AccordionTrigger";
 
 interface AccordionItemContextProps {
   isOpen: boolean;
-  triggerRef: React.RefObject<HTMLButtonElement>;
-  contentRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
   contentHeight: number;
   value: string | undefined;
   toggle: () => void;

@@ -1,0 +1,31 @@
+{
+  "title": "useViewportSize",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Tracks the current viewport dimensions and updates on resize.",
+  "published": true,
+  "summary": "Reactive viewport width and height tracking.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-viewport-size\" />\n",
+    "code": "var Component=(()=>{var h=Object.create;var s=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var w=Object.getOwnPropertyNames;var m=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var v=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),g=(t,e)=>{for(var o in e)s(t,o,{get:e[o],enumerable:!0})},a=(t,e,o,r)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of w(e))!f.call(t,i)&&i!==o&&s(t,i,{get:()=>e[i],enumerable:!(r=p(e,i))||r.enumerable});return t};var x=(t,e,o)=>(o=t!=null?h(m(t)):{},a(e||!t||!t.__esModule?s(o,\"default\",{value:t,enumerable:!0}):o,t)),k=t=>a(s({},\"__esModule\",{value:!0}),t);var d=v((_,c)=>{c.exports=_jsx_runtime});var y={};g(y,{default:()=>u,frontmatter:()=>z});var n=x(d()),z={date:\"2025-01-05\",title:\"useViewportSize\",description:\"Tracks the current viewport dimensions and updates on resize.\",summary:\"Reactive viewport width and height tracking.\",component:!0,links:{doc:\"https://\"}};function l(t){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...t.components},{SourceCodes:o}=e;return o||S(\"SourceCodes\",!0),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.hr,{}),`\n`,(0,n.jsx)(e.h2,{id:\"source-codes\",children:(0,n.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,n.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,n.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,n.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,n.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,n.jsx)(o,{name:\"use-viewport-size\",code:`\"use client\";\nimport { useCallback, useState, useEffect } from \"react\";\nimport { useWindowEvent } from \"@/hooks/use-window-event\";\n\nconst eventListerOptions = {\n  passive: true\n};\n\nexport function useViewportSize() {\n  const [windowSize, setWindowSize] = useState({\n    width: 0,\n    height: 0\n  });\n\n  const setSize = useCallback(() => {\n    setWindowSize({\n      width: window.innerWidth || 0,\n      height: window.innerHeight || 0\n    });\n  }, []);\n\n  useWindowEvent(\"resize\", setSize, eventListerOptions);\n  useWindowEvent(\"orientationchange\", setSize, eventListerOptions);\n  useEffect(setSize, [setSize]);\n\n  return windowSize;\n}`,ext:\".ts\",repo:\"web/hooks/use-viewport-size.ts\"})]})}function u(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(l,{...t})}):l(t)}function S(t,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+t+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return k(y);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-viewport-size.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-viewport-size.mdx",
+    "sourceFileName": "use-viewport-size.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-viewport-size"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-viewport-size",
+  "slug": "hooks/use-viewport-size",
+  "url": "/docs/web/hooks/use-viewport-size"
+}

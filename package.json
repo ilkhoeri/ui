@@ -1,5 +1,5 @@
 {
-  "name": "oeri",
+  "name": "ui",
   "version": "1.7.5",
   "private": true,
   "license": "MIT",
@@ -8,10 +8,10 @@
   "homepage": "https://github.com/ilkhoeri/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ilkhoeri/oeri.git"
+    "url": "https://github.com/ilkhoeri/ui.git"
   },
   "bugs": {
-    "url": "https://github.com/ilkhoeri/oeri/issues"
+    "url": "https://github.com/ilkhoeri/ui/issues"
   },
   "funding": [
     {
@@ -34,7 +34,7 @@
     "vercel": "vercel dev --listen 5005",
     "dev": "next dev",
     "prepare:withicon": "bun run generated:metadocs && bun run generated:icons && bun run prettier:format",
-    "prepare": "bun run generated:docsdemo && bun run exported:icons && bun run prettier:format",
+    "prepare:dev": "bun run generated:docsdemo && bun run exported:icons && bun run prettier:format",
     "build": "bun run build:content && next build",
     "build:content": "contentlayer2 build",
     "start": "next start",
@@ -61,7 +61,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-navigation-menu": "^1.2.1",
-    "@radix-ui/react-scroll-area": "^1.2.2",
+    "@radix-ui/react-scroll-area": "^1.2.14",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
@@ -76,13 +76,14 @@
     "embla-carousel-react": "^8.3.1",
     "framer-motion": "^11.11.13",
     "fs-extra": "11.1.1",
-    "next": "15.0.3",
+    "next": "^16.2.10",
     "next-contentlayer2": "^0.5.3",
     "next-pwa": "^5.6.0",
     "next-themes": "^0.4.3",
     "node-fetch": "^3.3.2",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "shiki": "^1.23.1",
     "sonner": "^2.0.3",
     "unified": "^11.0.4",
     "xuxi": "^1.0.0"
@@ -95,8 +96,8 @@
     "@types/fs-extra": "^11.0.4",
     "@types/next-pwa": "^5.6.9",
     "@types/node": "^20.11.27",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@typescript-eslint/parser": "^6.8.0",
     "autoprefixer": "^10.4.19",
     "chalk": "^5.3.0",

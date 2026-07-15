@@ -16,7 +16,8 @@ import { useShiki } from "./shiki-context";
 export const classes = cvx({
   variants: {
     selector: {
-      root: "relative mt-0 bg-primitive [&:where([data-collapsed]):global([data-radix-scroll-area-viewport]>div)]:!block",
+      // [&:where([data-collapsed]):global([data-radix-scroll-area-viewport]>div)]:!block
+      root: "relative mt-0 bg-primitive",
       code: "inline-block rounded-[.125rem] p-[var(--code-p,.0625rem_.1875rem)] font-mono [font-size:var(--code-fz,.8125rem)] leading-[--code-line-height,1.55]",
       codeWrapper: "relative max-h-[--ch-max-collapsed-height] overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:z-[38] before:rounded-[calc(.5rem-.0625rem)] before:bg-gradient-to-t before:from-primitive/85 before:content-[''] data-[expanded]:max-h-none data-[expanded]:before:hidden",
       showCodeButton:

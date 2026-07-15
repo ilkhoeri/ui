@@ -21,7 +21,7 @@ export default function Page() {
 
         <Link href="https://github.com/ilkhoeri/ioeri/graphs/contributors">
           <picture className="p-4">
-            <img src="https://contrib.rocks/image?repo=ilkhoeri/oeri" alt="contributors" height={64} width={64} />
+            <img src="https://contrib.rocks/image?repo=ilkhoeri/ui" alt="contributors" height={64} width={64} />
           </picture>
         </Link>
       </div>

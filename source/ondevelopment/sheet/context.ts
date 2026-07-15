@@ -4,8 +4,8 @@ import React from "react";
 import { DrawerDirection } from "./types";
 
 interface DrawerContextValue {
-  drawerRef: React.RefObject<HTMLDivElement>;
-  overlayRef: React.RefObject<HTMLDivElement>;
+  drawerRef: React.RefObject<HTMLDivElement | null>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
   scaleBackground: (open: boolean) => void;
   onPress: (event: React.PointerEvent<HTMLDivElement>) => void;
   onRelease: (event: React.PointerEvent<HTMLDivElement>) => void;
@@ -17,7 +17,7 @@ interface DrawerContextValue {
   handleOnly: boolean;
   isOpen: boolean;
   isDragging: boolean;
-  keyboardIsOpen: React.MutableRefObject<boolean>;
+  keyboardIsOpen: React.RefObject<boolean>;
   snapPointsOffset: number[] | null;
   snapPoints?: (number | string)[] | null;
   modal: boolean;

@@ -10,7 +10,8 @@ import { getHighlighter } from "@shikijs/compat";
 import { rehypeNpmCommand } from "@/resource/docs_demo/assets/rehype/rehype-customizer";
 import { rehypeComponent } from "./resource/docs_demo/assets/rehype/rehype-component";
 
-import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json" with { type: "json" };
+import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json";
+// import moonlightTheme from "@/resource/docs_demo/assets/rehype/moonlight.json" with { type: "json" };
 
 /**
  *- `URL`: https://example.com/blog/posts/article-1

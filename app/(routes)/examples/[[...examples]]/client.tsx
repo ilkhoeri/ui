@@ -9,7 +9,7 @@ import { Loader } from "@/ui/loader";
 const FallbackComponent = (segment: string[] | undefined) => (
   <div>
     <p className=" border-b pb-1 pt-2">Component not found</p>
-    <a href={`https://github.com/ilkhoeri/oeri/edit/master/resource/docs_raw/${sourceFiles(segment)}.mdx`} target="_blank" className="w-max justify-start gap-2 pb-1.5 pt-3 text-sm text-muted-foreground transition-colors underline-hover hover:text-constructive">
+    <a href={`https://github.com/ilkhoeri/ui/edit/main/resource/docs_raw/${sourceFiles(segment)}.mdx`} target="_blank" className="w-max justify-start gap-2 pb-1.5 pt-3 text-sm text-muted-foreground transition-colors underline-hover hover:text-constructive">
       Edit this page on GitHub <FileIcon arrow />
     </a>
   </div>

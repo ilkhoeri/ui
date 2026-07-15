@@ -39,7 +39,7 @@ export async function getRepo(raw: string, replace: Record<string, string> = {},
   text = filterContent(text, replace);
   return `\`\`\`${lang}\n${text}\n\`\`\``.trimEnd();
 }
-const git_raw = "https://raw.githubusercontent.com/ilkhoeri/oeri/refs/heads/master";
+const git_raw = "https://raw.githubusercontent.com/ilkhoeri/ui/refs/heads/main";
 
 export async function getRawIcons(basePath: string, replace: Record<string, string> = {}, options: GetContentOptions = {}) {
   const { lang = "tsx showLineNumbers", wrap = true } = options;

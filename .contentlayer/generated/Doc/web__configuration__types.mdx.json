@@ -1,0 +1,31 @@
+{
+  "title": "Types",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "A collection of shared TypeScript type definitions used throughout the application to ensure consistency and type safety.",
+  "published": true,
+  "summary": "Centralized TypeScript type definitions for consistent type usage across the app.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n## Source Codes\n\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"types\" />\n",
+    "code": "var Component=(()=>{var u=Object.create;var s=Object.defineProperty;var h=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var x=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),y=(n,e)=>{for(var r in e)s(n,r,{get:e[r],enumerable:!0})},a=(n,e,r,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let o of m(e))!g.call(n,o)&&o!==r&&s(n,o,{get:()=>e[o],enumerable:!(i=h(e,o))||i.enumerable});return n};var _=(n,e,r)=>(r=n!=null?u(f(n)):{},a(e||!n||!n.__esModule?s(r,\"default\",{value:n,enumerable:!0}):r,n)),v=n=>a(s({},\"__esModule\",{value:!0}),n);var d=x((b,c)=>{c.exports=_jsx_runtime});var j={};y(j,{default:()=>p,frontmatter:()=>w});var t=_(d()),w={date:\"2025-01-05\",title:\"Types\",description:\"A collection of shared TypeScript type definitions used throughout the application to ensure consistency and type safety.\",summary:\"Centralized TypeScript type definitions for consistent type usage across the app.\",component:!0,links:{doc:\"https://\"}};function l(n){let e={a:\"a\",animate:\"animate\",h2:\"h2\",p:\"p\",path:\"path\",svg:\"svg\",...n.components},{SourceCodes:r}=e;return r||k(\"SourceCodes\",!0),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h2,{id:\"source-codes\",children:(0,t.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,t.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,t.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,t.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,t.jsx)(e.p,{children:\"You can copy and paste this code directly to start using the component immediately.\"}),`\n`,(0,t.jsx)(r,{name:\"types\",code:`export enum Cookies {\n  dir = \"__dir\",\n  theme = \"__theme\",\n  isOpenAside = \"__is_open_aside\"\n}\n\nexport type Theme = \"dark\" | \"light\" | \"system\";\n\nexport interface UserAgent {\n  isBot: boolean;\n  ua: string;\n  browser: {\n    name?: string;\n    version?: string;\n    major?: string;\n  };\n  device: {\n    model?: string;\n    type?: string;\n    vendor?: string;\n  };\n  engine: {\n    name?: string;\n    version?: string;\n  };\n  os: {\n    name?: string;\n    version?: string;\n  };\n  cpu: {\n    architecture?: string;\n  };\n}`,ext:\".tsx\",repo:\"web/configuration/types.tsx\"})]})}function p(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(l,{...n})}):l(n)}function k(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return v(j);})();\n;return Component;"
+  },
+  "_id": "web/configuration/types.mdx",
+  "_raw": {
+    "sourceFilePath": "web/configuration/types.mdx",
+    "sourceFileName": "types.mdx",
+    "sourceFileDir": "web/configuration",
+    "contentType": "mdx",
+    "flattenedPath": "web/configuration/types"
+  },
+  "type": "Doc",
+  "path": "web/configuration/types",
+  "slug": "configuration/types",
+  "url": "/docs/web/configuration/types"
+}

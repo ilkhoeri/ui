@@ -1,0 +1,31 @@
+{
+  "title": "useId",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Generates a unique ID, useful for accessibility attributes or keying elements.",
+  "published": true,
+  "summary": "Creates a unique ID for consistent DOM identification.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-id\" />\n",
+    "code": "var Component=(()=>{var m=Object.create;var o=Object.defineProperty;var f=Object.getOwnPropertyDescriptor;var h=Object.getOwnPropertyNames;var p=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var I=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),y=(n,e)=>{for(var r in e)o(n,r,{get:e[r],enumerable:!0})},c=(n,e,r,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of h(e))!x.call(n,i)&&i!==r&&o(n,i,{get:()=>e[i],enumerable:!(s=f(e,i))||s.enumerable});return n};var E=(n,e,r)=>(r=n!=null?m(p(n)):{},c(e||!n||!n.__esModule?o(r,\"default\",{value:n,enumerable:!0}):r,n)),g=n=>c(o({},\"__esModule\",{value:!0}),n);var d=I((T,l)=>{l.exports=_jsx_runtime});var k={};y(k,{default:()=>u,frontmatter:()=>w});var t=E(d()),w={date:\"2025-01-05\",title:\"useId\",description:\"Generates a unique ID, useful for accessibility attributes or keying elements.\",summary:\"Creates a unique ID for consistent DOM identification.\",component:!0,links:{doc:\"https://\"}};function a(n){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...n.components},{SourceCodes:r}=e;return r||M(\"SourceCodes\",!0),(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.hr,{}),`\n`,(0,t.jsx)(e.h2,{id:\"source-codes\",children:(0,t.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,t.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,t.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,t.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,t.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,t.jsx)(r,{name:\"use-id\",code:`\"use client\";\nimport React, { useState } from \"react\";\nimport { useIsomorphicEffect } from \"./use-isomorphic-effect\";\n\nconst __useId: () => string | undefined = (React as any)[\"useId\".toString()] || (() => undefined);\n\nexport function useReactId() {\n  const id = __useId();\n  return id ? \\`\\${id.replace(/:/g, \"\")}\\` : \"\";\n}\n\nfunction randomId() {\n  return \\`\\${Math.random().toString(36).slice(2, 11)}\\`;\n}\n\nexport function useId(staticId?: string) {\n  const reactId = useReactId();\n  const [uuid, setUuid] = useState(reactId);\n\n  useIsomorphicEffect(() => {\n    setUuid(randomId());\n  }, []);\n\n  if (typeof staticId === \"string\") {\n    return staticId;\n  }\n\n  if (typeof window === \"undefined\") {\n    return reactId;\n  }\n\n  return uuid;\n}\n\nfunction generateHierarchyId<T extends HTMLElement = HTMLElement>(el: T) {\n  let id = \"\";\n  let total = 0;\n  let currentElement: HTMLElement | null = el;\n  const indices: number[] = [];\n\n  while (currentElement) {\n    const parentElement: HTMLElement | null = currentElement.parentElement;\n    if (parentElement) {\n      const children: HTMLElement[] = Array.from(parentElement.children) as HTMLElement[];\n      const index = children.indexOf(currentElement);\n\n      total += index;\n      indices.unshift(index);\n\n      id = \\`\\${index}-\\${id}\\`;\n    }\n    currentElement = parentElement;\n  }\n\n  const hierarchyId = indices.join(\"-\");\n  return \\`\\${total}-\\${hierarchyId}\\`;\n}\n\nexport function useHierarchyId<T extends HTMLElement = any>(el: T | null) {\n  const [id, setId] = useState<string>(\"\");\n\n  useIsomorphicEffect(() => {\n    if (el) {\n      const id = generateHierarchyId(el);\n      setId(id);\n    }\n  }, [el]);\n\n  return id;\n}\n\nexport const generatedyId = (element: HTMLElement | null): string => {\n  if (!element) return \"\";\n  const path = [];\n  let current: HTMLElement | null = element;\n\n  while (current && current.parentElement) {\n    const childrenArray = Array.from(current.parentElement.children);\n    const index = childrenArray.indexOf(current);\n    path.unshift(index + 1);\n    current = current.parentElement;\n  }\n\n  return path.join(\"-\");\n};`,ext:\".ts\",repo:\"web/hooks/use-id.ts\"})]})}function u(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,{...n,children:(0,t.jsx)(a,{...n})}):a(n)}function M(n,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+n+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return g(k);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-id.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-id.mdx",
+    "sourceFileName": "use-id.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-id"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-id",
+  "slug": "hooks/use-id",
+  "url": "/docs/web/hooks/use-id"
+}

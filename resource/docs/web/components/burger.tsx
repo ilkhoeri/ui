@@ -42,14 +42,14 @@ export const Burger = React.forwardRef<HTMLButtonElement, BurgerProps>(function 
     >
       <Svg currentFill="fill" size="calc(var(--burger-size)/1.333)" {...getStyles({ classes: "svg", open: openChange })}>
         {[...Array(3)].map((_, index) => (
-          <path key={index} {...getStyles({ path: String(index) as Index, open: openChange, index })} />
+          <path key={index} {...getStyles({ path: index as Index, open: openChange, index })} />
         ))}
       </Svg>
     </UnstyledButton>
   );
 });
 
-type Index = "0" | "1" | "2";
+type Index = 0 | 1 | 2;
 type Selector = cvxVariants<typeof burger>;
 interface Options extends Pick<BurgerProps, "style" | "size" | "unstyled" | "className" | "open" | "color"> {
   index?: number;
@@ -59,12 +59,12 @@ function getStyles(selector: Selector & Options = {}) {
   return {
     "data-state": classes ? (open ? "open" : "closed") : undefined,
     className: cn(!unstyled && burger(selector), className),
-    d: (path ? burger({ path: String(index) as Index }) : undefined) as React.SVGAttributes<SVGPathElement>["d"],
+    d: (path ? burger({ path: index as Index }) : undefined) as React.SVGAttributes<SVGPathElement>["d"],
     style: {
       ...(path
         ? {
             transition: "transform .35s ease",
-            transform: open ? burger({ isOpen: String(index) as Index }) : "none"
+            transform: open ? burger({ isOpen: index as Index }) : "none"
           }
         : undefined),
       ...(selector.classes === "root" ? { "--burger-size": rem(size), "--burger-color": color } : undefined),

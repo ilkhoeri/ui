@@ -54,19 +54,19 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((_p
     onBlur?.(event);
   };
 
-  const handleOnInput = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+  const handleOnInput = (event: React.InputEvent<HTMLTextAreaElement>) => {
     if (validateJson && !readOnly) {
       onValidationError?.(null);
     }
-    onFocus?.(event);
-    onAutoSIze(event);
+    onFocus?.(event as any);
+    onAutoSIze(event as any);
   };
 
-  const handleOnFocus = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnFocus = (event: React.FocusEvent<HTMLTextAreaElement, Element>) => {
     if (validateJson && event.target.value.trim() !== "") {
       if (isValidJson(event.target.value, deserialize)) onValidationError?.(null);
     }
-    onInput?.(event);
+    onInput?.(event as any);
   };
 
   return (

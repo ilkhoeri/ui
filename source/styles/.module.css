@@ -216,19 +216,19 @@
   & .tgl {
     display: none;
 
-    &::-moz-selection,
-    &:after::-moz-selection,
-    &:before::-moz-selection,
-    & *::-moz-selection,
-    & *:after::-moz-selection,
-    & *:before::-moz-selection,
-    & + .tgl_btn::-moz-selection,
+    &::--moz-selection,
+    /* &:after::-moz-selection,
+    &:before::-moz-selection, */
+    & *::--moz-selection,
+    /* & *:after::-moz-selection,
+    & *:before::-moz-selection, */
+    & + .tgl_btn::--moz-selection,
     &::selection,
-    &:after::selection,
-    &:before::selection,
+    /* &:after::selection,
+    &:before::selection, */
     & *::selection,
-    & *:after::selection,
-    & *:before::selection,
+    /* & *:after::selection,
+    & *:before::selection, */
     & + .tgl_btn::selection {
       background: none;
     }
@@ -393,5 +393,5 @@
   z-index: -1;
   background: var(--ring);
   filter: blur(20px);
-  opacity: var(0.7);
+  opacity: 0.7;
 }

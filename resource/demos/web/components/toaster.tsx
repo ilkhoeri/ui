@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { Toaster, type ToasterProps } from "@/ui/toaster";
 import { Button } from "@/ui/button";
 import { toast } from "sonner";

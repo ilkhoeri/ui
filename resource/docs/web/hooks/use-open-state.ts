@@ -56,8 +56,8 @@ export interface ClickOpenOptions extends StateSharedOptions {
 }
 
 export interface OpenStateOptions extends HoverOpenOptions, ClickOpenOptions, ObserveOptions {
-  triggerRef?: React.RefObject<HTMLButtonElement>;
-  contentRef?: React.RefObject<HTMLDivElement>;
+  triggerRef?: React.RefObject<HTMLButtonElement | null>;
+  contentRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 const DEFAULTEVENTS = ["mousedown", "touchstart"];
@@ -209,7 +209,7 @@ export function useUpdatedPositions(required: UseUpdatedPositions) {
         if (side === DataSide.right) setNewSide(DataSide.left);
       } else if (isOutOfTopViewport) {
         if (side === DataSide.top) setNewSide(DataSide.bottom);
-        if (newSide === DataSide.left || newSide === DataSide.right) setNewAlign(nextValue(newAlign, dataAlign.toReversed()));
+        if (newSide === DataSide.left || newSide === DataSide.right) setNewAlign(nextValue(newAlign, dataAlign?.toReversed()));
       } else if (isOutOfBottomViewport) {
         if (side === DataSide.bottom) setNewSide(DataSide.top);
         if (newSide === DataSide.left || newSide === DataSide.right) setNewAlign(nextValue(newAlign, dataAlign));

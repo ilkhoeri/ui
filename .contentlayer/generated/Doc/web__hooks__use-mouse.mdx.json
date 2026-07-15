@@ -1,0 +1,31 @@
+{
+  "title": "useMouse",
+  "date": "2025-01-05T00:00:00.000Z",
+  "description": "Tracks the mouse position, movement, and interaction with a specific DOM element.",
+  "published": true,
+  "summary": "Observes real-time mouse position and activity.",
+  "links": {
+    "doc": "https://",
+    "type": "LinksProperties",
+    "_raw": {}
+  },
+  "featured": false,
+  "component": true,
+  "toc": true,
+  "body": {
+    "raw": "\n---\n\n## Source Codes\n\nFull working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.\n\n<SourceCodes name=\"use-mouse\" />\n",
+    "code": "var Component=(()=>{var m=Object.create;var r=Object.defineProperty;var f=Object.getOwnPropertyDescriptor;var p=Object.getOwnPropertyNames;var h=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var v=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),y=(t,e)=>{for(var o in e)r(t,o,{get:e[o],enumerable:!0})},a=(t,e,o,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let s of p(e))!x.call(t,s)&&s!==o&&r(t,s,{get:()=>e[s],enumerable:!(i=f(e,s))||i.enumerable});return t};var M=(t,e,o)=>(o=t!=null?m(h(t)):{},a(e||!t||!t.__esModule?r(o,\"default\",{value:t,enumerable:!0}):o,t)),w=t=>a(r({},\"__esModule\",{value:!0}),t);var l=v((P,c)=>{c.exports=_jsx_runtime});var k={};y(k,{default:()=>d,frontmatter:()=>g});var n=M(l()),g={date:\"2025-01-05\",title:\"useMouse\",description:\"Tracks the mouse position, movement, and interaction with a specific DOM element.\",summary:\"Observes real-time mouse position and activity.\",component:!0,links:{doc:\"https://\"}};function u(t){let e={a:\"a\",animate:\"animate\",h2:\"h2\",hr:\"hr\",p:\"p\",path:\"path\",svg:\"svg\",...t.components},{SourceCodes:o}=e;return o||E(\"SourceCodes\",!0),(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.hr,{}),`\n`,(0,n.jsx)(e.h2,{id:\"source-codes\",children:(0,n.jsxs)(e.a,{className:\"subheading-anchor anchor_id text-color flex flex-row flex-wrap justify-start items-center pl-8 rtl:pl-0 rtl:pr-8 relative\",\"aria-label\":\"Link to section\",href:\"#source-codes\",children:[\"Source Codes\",(0,n.jsx)(e.svg,{xmlns:\"http://www.w3.org/2000/svg\",width:\"24\",height:\"24\",fillRule:\"evenodd\",clipRule:\"evenodd\",fill:\"currentColor\",viewBox:\"0 0 24 24\",className:\"\",children:(0,n.jsx)(e.path,{fill:\"none\",stroke:\"currentColor\",strokeDasharray:\"28\",strokeDashoffset:\"28\",strokeLinecap:\"round\",strokeLinejoin:\"round\",strokeWidth:\"2.8\",d:\"M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0\",children:(0,n.jsx)(e.animate,{fill:\"freeze\",attributeName:\"stroke-dashoffset\",dur:\"1s\",values:\"28;0\"})})})]})}),`\n`,(0,n.jsx)(e.p,{children:`Full working code example, including necessary markup and styles.\nYou can copy and paste this code directly to start using the component immediately.`}),`\n`,(0,n.jsx)(o,{name:\"use-mouse\",code:`\"use client\";\nimport { useEffect, useRef, useState } from \"react\";\nimport type { MouseEvent } from \"react\";\n\nexport function useMouse<T extends HTMLElement = any>(options: { resetOnExit?: boolean } = { resetOnExit: false }) {\n  const [position, setPosition] = useState({ x: 0, y: 0 });\n\n  const ref = useRef<T>(null);\n\n  const setMousePosition = (event: MouseEvent<HTMLElement>) => {\n    if (ref.current) {\n      const rect = event.currentTarget.getBoundingClientRect();\n\n      const x = Math.max(0, Math.round(event.pageX - rect.left - (window.pageXOffset || window.scrollX)));\n\n      const y = Math.max(0, Math.round(event.pageY - rect.top - (window.pageYOffset || window.scrollY)));\n\n      setPosition({ x, y });\n    } else {\n      setPosition({ x: event.clientX, y: event.clientY });\n    }\n  };\n\n  const resetMousePosition = () => setPosition({ x: 0, y: 0 });\n\n  useEffect(() => {\n    const element = ref?.current ? ref.current : document;\n    element.addEventListener(\"mousemove\", setMousePosition as any);\n    if (options.resetOnExit) element.addEventListener(\"mouseleave\", resetMousePosition as any);\n\n    return () => {\n      element.removeEventListener(\"mousemove\", setMousePosition as any);\n      if (options.resetOnExit) element.removeEventListener(\"mouseleave\", resetMousePosition as any);\n    };\n  }, [ref, options]);\n\n  return { ref, ...position };\n}`,ext:\".ts\",repo:\"web/hooks/use-mouse.ts\"})]})}function d(t={}){let{wrapper:e}=t.components||{};return e?(0,n.jsx)(e,{...t,children:(0,n.jsx)(u,{...t})}):u(t)}function E(t,e){throw new Error(\"Expected \"+(e?\"component\":\"object\")+\" `\"+t+\"` to be defined: you likely forgot to import, pass, or provide it.\")}return w(k);})();\n;return Component;"
+  },
+  "_id": "web/hooks/use-mouse.mdx",
+  "_raw": {
+    "sourceFilePath": "web/hooks/use-mouse.mdx",
+    "sourceFileName": "use-mouse.mdx",
+    "sourceFileDir": "web/hooks",
+    "contentType": "mdx",
+    "flattenedPath": "web/hooks/use-mouse"
+  },
+  "type": "Doc",
+  "path": "web/hooks/use-mouse",
+  "slug": "hooks/use-mouse",
+  "url": "/docs/web/hooks/use-mouse"
+}

@@ -1,7 +1,7 @@
+// import { userAgent } from "next/server";
+// import { cookies } from "next/headers";
+// import { Cookies, Theme } from "@/modules/web/configuration/types";
 import { bodyConfig } from "./fonts";
-import { userAgent } from "next/server";
-import { headers, cookies } from "next/headers";
-import { Cookies, Theme } from "@/modules/web/configuration/types";
 import { ScrollToggle } from "@/source/assets/toggle";
 import { FootNav } from "@/source/assets/nav-foot";
 import { NavProvider } from "@/source/hooks/use-nav";
@@ -20,88 +20,86 @@ import "./themeid-default.css";
 import "../source/styles/docs.css";
 import "../source/styles/moonlight.css";
 
-export function metadata(): Metadata {
-  return {
-    title: {
-      template: "%s | Oeri UI",
-      default: siteConfig.name
-    },
-    applicationName: siteConfig.name,
-    description: siteConfig.description,
-    category: "Campuss Platform",
-    manifest: "/manifest.json",
-    generator: siteConfig.name,
-    publisher: siteConfig.name,
-    referrer: "origin-when-cross-origin",
-    keywords: [...siteConfig.keywords],
-    creator: siteConfig.creator,
-    authors: [{ name: siteConfig.creator }, { name: siteConfig.creator, url: siteConfig.links.github }],
-    robots: {
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Oeri UI",
+    default: siteConfig.name
+  },
+  applicationName: siteConfig.name,
+  description: siteConfig.description,
+  category: "Campuss Platform",
+  manifest: "/manifest.json",
+  generator: siteConfig.name,
+  publisher: siteConfig.name,
+  referrer: "origin-when-cross-origin",
+  keywords: [...siteConfig.keywords],
+  creator: siteConfig.creator,
+  authors: [{ name: siteConfig.creator }, { name: siteConfig.creator, url: siteConfig.links.github }],
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
       index: true,
       follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        noimageindex: false,
-        "max-video-preview": -1,
-        "max-image-preview": "large",
-        "max-snippet": -1
-      }
-    },
-    openGraph: {
-      title: siteConfig.name,
-      description: siteConfig.description,
-      url: siteConfig.url,
-      siteName: siteConfig.name,
-      images: [
-        {
-          url: "/assets/images/screenshoot-app.webp",
-          width: 1200,
-          height: 630
-        }
-      ],
-      locale: "en_US",
-      type: "website"
-    },
-    alternates: {
-      canonical: "/",
-      languages: {
-        id: "/",
-        en: "/en",
-        ar: "/ar",
-        ja: "/ja",
-        jv: "/jv",
-        ms: "/ms",
-        th: "/th"
-      }
-    },
-    formatDetection: {
-      email: false,
-      address: false,
-      telephone: false
-    },
-    ...iconsConfig,
-    ...linksConfig,
-    // SEO verification
-    ...SEO_VERIFICATION,
-    // archives
-    archives: [...siteConfig.archives],
-    other: {
-      hostname: siteConfig.url,
-      "expected-hostname": siteConfig.url,
-      "msapplication-config": "/browserconfig.xml",
-      "mobile-web-app-capable": "yes",
-      "apple-mobile-web-app-capable": "yes",
-      "apple-mobile-web-app-status-bar-style": "default",
-      "apple-mobile-web-app-title": siteConfig.name,
-      "format-detection": "telephone=no",
-      "msapplication-TileColor": "#ffffff",
-      "msapplication-TileImage": "/favicon/ms-icon-144x144.png",
-      "msapplication-tap-highlight": "no"
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
     }
-  };
-}
+  },
+  openGraph: {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: "/assets/images/screenshoot-app.webp",
+        width: 1200,
+        height: 630
+      }
+    ],
+    locale: "en_US",
+    type: "website"
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      id: "/",
+      en: "/en",
+      ar: "/ar",
+      ja: "/ja",
+      jv: "/jv",
+      ms: "/ms",
+      th: "/th"
+    }
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false
+  },
+  ...iconsConfig,
+  ...linksConfig,
+  // SEO verification
+  ...SEO_VERIFICATION,
+  // archives
+  archives: [...siteConfig.archives],
+  other: {
+    hostname: siteConfig.url,
+    "expected-hostname": siteConfig.url,
+    "msapplication-config": "/browserconfig.xml",
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-title": siteConfig.name,
+    "format-detection": "telephone=no",
+    "msapplication-TileColor": "#ffffff",
+    "msapplication-TileImage": "/favicon/ms-icon-144x144.png",
+    "msapplication-tap-highlight": "no"
+  }
+};
 
 export const viewport = {
   minimumScale: 1,
@@ -118,26 +116,27 @@ export const viewport = {
   ]
 };
 
-async function cookiesValues() {
-  const cookiesStore = await cookies();
-  return {
-    dir: cookiesStore.get(Cookies.dir)?.value as Direction,
-    theme: cookiesStore.get(Cookies.theme)?.value as Theme,
-    isOpenAside: (cookiesStore.get(Cookies.isOpenAside)?.value === "true") as boolean
-  };
-}
+// async function cookiesValues() {
+//   const cookiesStore = await cookies();
+//   return {
+//     dir: cookiesStore.get(Cookies.dir)?.value as Direction,
+//     theme: cookiesStore.get(Cookies.theme)?.value as Theme,
+//     isOpenAside: (cookiesStore.get(Cookies.isOpenAside)?.value === "true") as boolean
+//   };
+// }
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
 export default async function RootLayout({ children }: Readonly<RootLayoutProps>) {
-  const [headersList, cookieStore] = await Promise.all([headers(), cookiesValues()]);
-  const ua = userAgent({ headers: headersList });
+  // const [cookieStore] = await Promise.all([cookiesValues()]);
+  // const headersList = await headers();
+  // const ua = userAgent({ headers: headersList });
 
   return (
-    <AppProvider userAgent={ua} {...cookieStore}>
-      <html lang="en" dir={cookieStore.dir} suppressHydrationWarning data-themeid-light="default" data-themeid-dark="default" data-theme="default">
+    <AppProvider dir="ltr" isOpenAside={true} theme="system">
+      <html lang="en" dir="ltr" suppressHydrationWarning data-themeid-light="default" data-themeid-dark="default" data-theme="default">
         <head>
           <link rel="shortcut icon" href="/favicon.ico" />
           <meta name="apple-mobile-web-app-title" content="Portal" />
