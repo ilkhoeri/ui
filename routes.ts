@@ -71,7 +71,7 @@ export function generatedMetaDocsRoute(data: FileDocMeta[], order: readonly stri
   return result;
 }
 
-const customOrder = ["configuration", "utilities", "components", "hooks"] as const;
+export const customOrder = ["configuration", "utilities", "components", "hooks"] as const;
 
 export const metaDocsRoute = generatedMetaDocsRoute(fileDocsMeta, customOrder);
 

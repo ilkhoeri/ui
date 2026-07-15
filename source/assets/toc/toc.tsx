@@ -51,12 +51,12 @@ export function TableOfContents({ toc, sub }: TocProps) {
   const mount = useMounted();
   const { min_lg } = useQueryApp();
   const { ready } = useContentReady();
-
   const itemIds = React.useMemo(() => extractIds(toc?.items), [toc]);
   const activeItem = useActiveItem(itemIds);
 
   const paths = pathname.split("/").slice(2).filter(Boolean);
-  const editPageLink = paths.length > 1 ? `${EDITPAGE_BASE_URL}/${sourceFile(paths)}.mdx` : paths.length === 1 ? `${EDITPAGE_BASE_URL}/docs.mdx` : "";
+  const isEditable = paths.length >= 1;
+  const editPageLink = isEditable ? `${EDITPAGE_BASE_URL}/${sourceFile(paths)}.mdx` : "";
 
   const isAvailableTOC = min_lg && toc?.items && toc?.items?.length > 1;
 
@@ -87,11 +87,12 @@ export function TableOfContents({ toc, sub }: TocProps) {
           </>
         )
       )}
-
-      <Link href={editPageLink} target="_blank" rel="noopener noreferrer nofollow" className="group mt-5 h-4 justify-start gap-1 pb-1.5 text-muted-foreground">
-        <span className="truncate text-sm transition-all underline-hover group-hover:text-constructive">Edit this page on GitHub</span>
-        <CircleArrowIcon size={18} className="group-hover:text-blue-500" />
-      </Link>
+      {isEditable && (
+        <Link href={editPageLink} target="_blank" rel="noopener noreferrer nofollow" className="group mt-5 h-4 justify-start gap-1 pb-1.5 text-muted-foreground">
+          <span className="truncate text-sm transition-all underline-hover group-hover:text-constructive">Edit this page on GitHub</span>
+          <CircleArrowIcon size={18} className="group-hover:text-blue-500" />
+        </Link>
+      )}
     </aside>
   );
 }

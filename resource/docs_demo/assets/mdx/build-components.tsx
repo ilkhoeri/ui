@@ -4,11 +4,13 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
-import { Button, ButtonProps } from "@/ui/button";
-import { CheckIcon, ClipboardCheckIcon } from "@/icons/*";
-import { typographyVariant } from "@/ui/typography";
-import { FloatingIndicator } from "@/ui/floating-indicator";
+import { customOrder } from "@/routes";
+import { siteConfig } from "@/site/config";
 import { transform } from "@/utils/text-parser";
+import { Button, ButtonProps } from "@/ui/button";
+import { typographyVariant } from "@/ui/typography";
+import { CheckIcon, ClipboardCheckIcon } from "@/icons/*";
+import { FloatingIndicator } from "@/ui/floating-indicator";
 
 type SizeImage = number | `${number}`;
 type DataFigure = {
@@ -86,8 +88,6 @@ export function CopyButton({ text, className, ...props }: CopyButtonProps) {
   );
 }
 
-const data = ["components", "hooks", "utilities", "configuration"];
-
 export function BannerClosingGetStarted() {
   const [rootRef, setRootRef] = React.useState<HTMLDivElement | null>(null);
   const [controlsRefs, setControlsRefs] = React.useState<Record<string, HTMLAnchorElement | null>>({});
@@ -100,13 +100,12 @@ export function BannerClosingGetStarted() {
   };
   const isActive = (index: number) => ((hover ?? active) === index ? "true" : undefined);
 
-  const controls = data.map((item, index) => (
+  const controls = customOrder.map((item, index) => (
     <Link
       key={item}
       href={`/docs/web/${item}`}
-      className={cn(
-        "touch-manipulation appearance-none rounded-none border-white text-sm font-medium leading-none text-[#c1c1c1] transition hover:!text-black data-[active]:text-black max-md:border-x max-md:border-t max-md:first-of-type:rounded-t-xl max-md:last-of-type:rounded-b-xl max-md:last-of-type:border-y md:border-y md:border-l md:shadow-md md:first-of-type:rounded-l-xl md:last-of-type:rounded-r-xl md:last-of-type:border"
-      )}
+      className="touch-manipulation appearance-none rounded-none border-white text-sm font-medium leading-none text-[#c1c1c1] transition hover:!text-black data-[active]:text-black md:shadow-md max-md:border-x max-md:border-t max-md:first-of-type:rounded-t-xl max-md:last-of-type:rounded-b-xl max-md:last-of-type:border-y md:border-y md:border-l md:first-of-type:rounded-l-xl md:last-of-type:rounded-r-xl md:last-of-type:border md:rtl:border-l-0 md:rtl:border-r md:rtl:first-of-type:rounded-l-none md:rtl:first-of-type:rounded-r-xl md:rtl:last-of-type:rounded-r-none md:rtl:last-of-type:rounded-l-xl"
+
       ref={setControlRef(index)}
       onClick={() => setActive(index)}
       data-active={isActive(index)}
@@ -122,7 +121,7 @@ export function BannerClosingGetStarted() {
     <section className="card_fold rounded-2xl px-8 py-12 text-white shadow-xl">
       <h3 className={cn(typographyVariant({ prose: "h3" }), "relative z-[3] !mt-0")}>Ready to build with confidence?</h3>
       <p className="relative z-[3] mt-3 max-w-xl text-lg text-[#c1c1c1]">
-        <b>Oeri UI</b> gives you full control, elegant defaults, and a toolbox designed to scale — no bloat, no surprises.
+        <b>{siteConfig.name}</b> gives you full control, elegant defaults, and a toolbox designed to scale — no bloat, no surprises.
       </p>
 
       <p className="relative z-[3] mt-4 text-base font-medium text-white">Explore:</p>
