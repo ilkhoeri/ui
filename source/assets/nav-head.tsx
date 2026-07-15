@@ -61,7 +61,7 @@ export function Headnav({ routes = metaDocsRoute }: HeadnavProps) {
           </div>
         )}
 
-        <div dir={dir} className={globalStyle({ toggle: "group" }, { "max-md:pr-2 rtl:max-md:pr-0 rtl:max-md:pl-2": excludesPath }, "ltr:ml-auto rtl:mr-auto gap-1.5")}>
+        <div dir={dir} className={globalStyle({ toggle: "group" }, { "max-md:pr-2 rtl:max-md:pr-0 rtl:max-md:pl-2": excludesPath }, "ml-auto mr-0 rtl:ml-0 rtl:mr-auto gap-1.5")}>
           <CommandDialog routes={routes} />
           <div className="grid grid-flow-col gap-0.5">
             <LinksSection />

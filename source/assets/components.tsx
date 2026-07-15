@@ -11,7 +11,7 @@ type ElementType<T> = {
 export type ComponentType<T> = React.ComponentType<React.HTMLAttributes<T>>;
 export type PartialType<K extends keyof any, T> = Partial<{ [P in K]?: T }>;
 
-const varsComp = cvx({
+export const compStyles = cvx({
   assign: "relative",
   variants: {
     el: {
@@ -28,18 +28,18 @@ export type ClassesProps<T extends (...keys: any) => any> = cvxVariants<T> & {
 };
 export function classes<T extends (...keys: any) => any>(props: ClassesProps<T>): string {
   const { className, unstyled = false, ...rest } = props;
-  return cn(!unstyled && varsComp({ ...rest }), className)!;
+  return cn(!unstyled && compStyles({ ...rest }), className)!;
 }
 
 export const Comp = React.forwardRef<HTMLElement, ElementType<HTMLElement>>((_props, ref) => {
   const { el = "main", unstyled, className, ...props } = _props;
   const Component = el;
-  const els = (el as cvxVariants<typeof varsComp>["el"]) || undefined;
+  const els = (el as cvxVariants<typeof compStyles>["el"]) || undefined;
   return (
     <Component
       {...{
         ref,
-        className: classes<typeof varsComp>({
+        className: classes<typeof compStyles>({
           el: els,
           unstyled,
           className

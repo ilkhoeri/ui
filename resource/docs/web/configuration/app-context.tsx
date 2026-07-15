@@ -43,8 +43,8 @@ function useCookieValues() {
 
 export function AppProvider(props: AppProviderProps) {
   const { children, ...others } = props;
-  const { theme, dir: initialDirection, isOpenAside } = useCookieValues();
-  const { dir, ..._direction } = useDirection({ initialDirection });
+  const { theme, dir: defaultDirection, isOpenAside } = useCookieValues();
+  const { dir, ..._direction } = useDirection({ defaultDirection, detectDirection: false });
   const [openAside, setOpenAside] = React.useState<Booleanish>(isOpenAside);
   const setCookie = React.useCallback((name: string, value: string, days = 30) => {
     const date = new Date();
@@ -66,11 +66,5 @@ export function AppProvider(props: AppProviderProps) {
     [theme, dir, openAside, setOpenAside, isOpenAside, setCookie, _direction, others]
   );
 
-  return (
-    <ctx.Provider value={contextValue}>
-      <html lang="en" dir={dir} suppressHydrationWarning data-themeid-light="default" data-themeid-dark="default" data-theme="default">
-        {children}
-      </html>
-    </ctx.Provider>
-  );
+  return <ctx.Provider value={contextValue}>{children}</ctx.Provider>;
 }

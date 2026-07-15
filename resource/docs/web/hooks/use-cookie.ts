@@ -3,7 +3,7 @@ import * as React from "react";
 
 export type CookieName = string & {};
 
-function documentCookie(name: CookieName) {
+export function documentCookie(name: CookieName) {
   return typeof document !== "undefined"
     ? document.cookie
         .split("; ")

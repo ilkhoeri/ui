@@ -2,15 +2,16 @@
 // import { cookies } from "next/headers";
 // import { Cookies, Theme } from "@/modules/web/configuration/types";
 import { bodyConfig } from "./fonts";
-import { ScrollToggle } from "@/source/assets/toggle";
+import { metaDocsRoute } from "@/routes";
+import { Main } from "@/source/assets/main";
+import { Headnav } from "@/source/assets/nav-head";
 import { FootNav } from "@/source/assets/nav-foot";
 import { NavProvider } from "@/source/hooks/use-nav";
-import { AppProvider } from "@/modules/web/configuration/app-context";
-import { ThemeProvider } from "@/modules/web/configuration/themes";
-import { Comp } from "@/source/assets/components";
-import { Headnav } from "@/source/assets/nav-head";
+import { ScrollToggle } from "@/source/assets/toggle";
+import { ClientOnly } from "@/source/assets/client-only";
 import { AsideLeft } from "@/source/assets/nav-aside-left";
-import { metaDocsRoute } from "@/routes";
+import { ThemeProvider } from "@/modules/web/configuration/themes";
+import { AppProvider } from "@/modules/web/configuration/app-context";
 import { META_THEME_COLORS, SEO_VERIFICATION, siteConfig, iconsConfig, linksConfig } from "../site/config";
 
 import type { Metadata } from "next";
@@ -136,29 +137,33 @@ export default async function RootLayout({ children }: Readonly<RootLayoutProps>
 
   return (
     <AppProvider>
-      <head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta name="apple-mobile-web-app-title" content="Portal" />
-        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-        <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
-      </head>
-      <body {...bodyConfig()}>
-        <ThemeProvider>
-          <NavProvider>
-            <Headnav />
-            <Comp>
-              <AsideLeft routes={metaDocsRoute} />
-              {children}
-            </Comp>
-            <FootNav />
-          </NavProvider>
-          <ScrollToggle />
-        </ThemeProvider>
-      </body>
+      <html lang="en" suppressHydrationWarning data-themeid-light="default" data-themeid-dark="default" data-theme="default">
+        <head>
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <meta name="apple-mobile-web-app-title" content="Portal" />
+          <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+          <link rel="icon" type="image/x-icon" sizes="any" href="/favicon.ico" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+          <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+        </head>
+        <body {...bodyConfig()}>
+          <ThemeProvider>
+            <ClientOnly>
+              <NavProvider>
+                <Headnav />
+                <Main>
+                  <AsideLeft routes={metaDocsRoute} />
+                  {children}
+                </Main>
+                <FootNav />
+              </NavProvider>
+              <ScrollToggle />
+            </ClientOnly>
+          </ThemeProvider>
+        </body>
+      </html>
     </AppProvider>
   );
 }

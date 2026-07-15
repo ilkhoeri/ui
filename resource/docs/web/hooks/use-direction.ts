@@ -4,15 +4,15 @@ import React from "react";
 export type Direction = "ltr" | "rtl";
 export interface useDirectionProps {
   /** Direction set as a default value, `ltr` by default */
-  initialDirection?: Direction;
+  defaultDirection?: Direction;
   /** Determines whether direction should be updated on mount based on `dir` attribute set on root element (usually html element), `true` by default */
   detectDirection?: boolean;
 }
 export function useDirection(_dir: useDirectionProps) {
-  const { initialDirection = "ltr", detectDirection = true } = _dir;
+  const { defaultDirection = "ltr", detectDirection = true } = _dir;
   const useIsomorphicEffect = typeof document !== "undefined" ? React.useLayoutEffect : React.useEffect;
 
-  const [dir, setDir] = React.useState<Direction>(initialDirection);
+  const [dir, setDir] = React.useState<Direction>(defaultDirection);
 
   const setCookie = (name: string, value: string, days = 30) => {
     const date = new Date();
@@ -33,7 +33,7 @@ export function useDirection(_dir: useDirectionProps) {
         setDirection(direction);
       }
     }
-  }, []);
+  }, [detectDirection]);
 
   const toggleDirection = () => setDirection(dir === "ltr" ? "rtl" : "ltr");
 
